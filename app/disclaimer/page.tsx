@@ -7,30 +7,35 @@ import Link from "next/link";
 const sections = [
   {
     icon: <Heart className="w-5 h-5" />,
+    num: "01",
     title: "Website Humor & Hiburan",
-    content: "Website SantetOnline adalah website yang dibuat untuk tujuan humor dan hiburan semata. Semua konten adalah fiksi dan simulasi. Tidak ada意图 untuk menyinggung atau menyakiti siapapun.",
+    content: "Website SantetOnline adalah website yang dibuat untuk tujuan humor dan hiburan semata. Semua konten adalah fiksi dan simulasi. Tidak ada niat untuk menyinggung atau menyakiti siapapun.",
     accent: false,
   },
   {
     icon: <Shield className="w-5 h-5" />,
+    num: "02",
     title: "Tidak Ada Santet Nyata",
     content: "Tidak ada layanan santet yang sebenarnya di website ini. Semua paket santet hanyalah konten humor. Santet adalah bagian dari budaya tradisional Indonesia, tapi website ini hanya untuk hiburan.",
     accent: false,
   },
   {
     icon: <AlertTriangle className="w-5 h-5" />,
+    num: "03",
     title: "Pembayaran Dummy/Simulasi",
     content: "Semua proses pembayaran di website ini adalah simulasi/dummy. QRIS yang ditampilkan adalah QR code dummy yang tidak terhubung ke payment gateway manapun. Tidak ada uang nyata yang dipotong.",
     accent: false,
   },
   {
     icon: <BookOpen className="w-5 h-5" />,
+    num: "04",
     title: "Tujuan Edukasi",
     content: "Website ini juga bertujuan untuk mengedukasi masyarakat tentang sejarah dan budaya santet di Indonesia. Semua informasi sejarah bersifat edukatif dan dapat diverifikasi.",
     accent: false,
   },
   {
     icon: <Info className="w-5 h-5" />,
+    num: "05",
     title: "Jangan Serius Ya!",
     content: "Website ini murni dibuat untuk hiburan dan humor. Jika Anda terhibur, share ke teman-teman ya! Ketawa bersama lebih baik daripada marah-marah sendiri.",
     accent: true,
@@ -59,20 +64,24 @@ export default function DisclaimerPage() {
         </motion.div>
 
         {/* Sections */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           {sections.map((section, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15 + i * 0.08 }}
-              className={`rounded-2xl p-5 ${
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ delay: i * 0.05 }}
+              className={`rounded-2xl p-5 group ${
                 section.accent
                   ? "bg-secondary/5 dark:bg-secondary/8 border border-secondary/15 dark:border-secondary/20"
                   : "card-base"
               }`}
             >
-              <div className="flex items-center gap-2.5 mb-3">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-[10px] font-mono text-accent/30 dark:text-accent/40 uppercase tracking-widest">
+                  {section.num}
+                </span>
                 <div className={section.accent ? "text-secondary/60 dark:text-secondary/70" : "text-accent/60 dark:text-accent/70"}>
                   {section.icon}
                 </div>
@@ -82,7 +91,7 @@ export default function DisclaimerPage() {
                   {section.title}
                 </h2>
               </div>
-              <p className="text-[13px] text-muted leading-relaxed">
+              <p className="text-[13px] text-muted leading-relaxed pl-9">
                 {section.content}
               </p>
             </motion.div>
@@ -91,10 +100,10 @@ export default function DisclaimerPage() {
 
         {/* QRIS info */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="mt-6 card-base p-5"
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-6 card-base p-5 hover:transform-none"
         >
           <h3 className="font-['Cinzel'] text-sm font-bold text-accent/50 dark:text-accent/60 mb-2">
             Tentang QRIS di Website Ini
@@ -106,9 +115,9 @@ export default function DisclaimerPage() {
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           className="mt-10 text-center space-y-4"
         >
           <p className="text-[13px] text-muted-light/50">

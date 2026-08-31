@@ -14,29 +14,33 @@ import {
   Zap,
   ArrowRight,
   Skull,
+  ChevronRight,
+  Users,
+  TrendingUp,
+  Award,
 } from "lucide-react";
 
 const features = [
   {
-    icon: <Truck className="w-6 h-6" />,
+    icon: <Truck className="w-5 h-5" />,
     title: "Santet Delivery",
     description: "Dikirim langsung ke rumah target via kurir gaib. Tracking real-time sampai santet sampai.",
     color: "accent",
   },
   {
-    icon: <Clock className="w-6 h-6" />,
+    icon: <Clock className="w-5 h-5" />,
     title: "Santet Kilat",
     description: "Instant delivery, efek langsung dalam hitungan jam. Cocok untuk yang butuh hasil cepat.",
     color: "secondary",
   },
   {
-    icon: <Shield className="w-6 h-6" />,
+    icon: <Shield className="w-5 h-5" />,
     title: "Garansi Puas",
     description: "Gagal santet? Uang kembali 200%. Kami yakin efeknya pasti terasa (atau tidak).",
     color: "green",
   },
   {
-    icon: <Headphones className="w-6 h-6" />,
+    icon: <Headphones className="w-5 h-5" />,
     title: "CS 24/7",
     description: "Customer service gaib standby kapan saja. Chat via WhatsApp spiritual kami.",
     color: "accent",
@@ -74,7 +78,7 @@ const howItWorks = [
   { step: "04", title: "Tunggu Hasil", desc: "Efek muncul dalam 3-7 hari kerja" },
 ];
 
-function AnimatedCounter({ value, label }: { value: string; label: string }) {
+function AnimatedCounter({ value, label, icon }: { value: string; label: string; icon: React.ReactNode }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
@@ -83,9 +87,12 @@ function AnimatedCounter({ value, label }: { value: string; label: string }) {
       ref={ref}
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      className="text-center"
+      className="text-center group"
     >
-      <div className="text-3xl md:text-4xl font-bold text-accent mb-1">{value}</div>
+      <div className="w-10 h-10 mx-auto mb-3 rounded-xl bg-accent/8 dark:bg-accent/10 flex items-center justify-center text-accent/60 dark:text-accent/70 group-hover:scale-110 transition-transform">
+        {icon}
+      </div>
+      <div className="text-2xl md:text-3xl font-bold text-accent mb-1">{value}</div>
       <div className="text-[11px] text-muted-light uppercase tracking-wider">{label}</div>
     </motion.div>
   );
@@ -118,12 +125,11 @@ export default function Home() {
               Kenapa Pilih Kami?
             </h2>
             <p className="text-muted max-w-md mx-auto text-sm">
-              SantetOnline hadir dengan layanan terbaik untuk kebutuhan santet
-              Anda
+              SantetOnline hadir dengan layanan terbaik untuk kebutuhan santet Anda
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {features.map((feature, i) => (
               <motion.div
                 key={i}
@@ -131,15 +137,15 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ delay: i * 0.08 }}
-                className="card-base p-6 text-center group"
+                className="card-base p-5 text-center group cursor-default"
               >
-                <div className="w-12 h-12 mx-auto mb-4 bg-accent/8 dark:bg-accent/10 rounded-xl flex items-center justify-center text-accent/70 dark:text-accent/80 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-11 h-11 mx-auto mb-3 bg-accent/8 dark:bg-accent/10 rounded-xl flex items-center justify-center text-accent/70 dark:text-accent/80 group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
                 </div>
-                <h3 className="font-['Cinzel'] text-base font-bold text-accent mb-2">
+                <h3 className="font-['Cinzel'] text-[15px] font-bold text-accent mb-1.5">
                   {feature.title}
                 </h3>
-                <p className="text-[13px] text-muted leading-relaxed">
+                <p className="text-[12px] text-muted leading-relaxed">
                   {feature.description}
                 </p>
               </motion.div>
@@ -151,11 +157,11 @@ export default function Home() {
       {/* Stats */}
       <section className="py-16 bg-primary/20 dark:bg-[#111118]/40">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <AnimatedCounter value="10,000+" label="Korban Tertipu" />
-            <AnimatedCounter value="4.9/5" label="Rating Dukun" />
-            <AnimatedCounter value="50,000+" label="Santet Terkirim" />
-            <AnimatedCounter value="24/7" label="Online Terus" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <AnimatedCounter value="10,000+" label="Korban Tertipu" icon={<Users className="w-5 h-5" />} />
+            <AnimatedCounter value="4.9/5" label="Rating Dukun" icon={<Award className="w-5 h-5" />} />
+            <AnimatedCounter value="50,000+" label="Santet Terkirim" icon={<TrendingUp className="w-5 h-5" />} />
+            <AnimatedCounter value="24/7" label="Online Terus" icon={<Clock className="w-5 h-5" />} />
           </div>
         </div>
       </section>
@@ -181,7 +187,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {howItWorks.map((item, i) => (
               <motion.div
                 key={i}
@@ -191,15 +197,17 @@ export default function Home() {
                 transition={{ delay: i * 0.1 }}
                 className="relative"
               >
-                <div className="card-base p-5 text-center h-full">
-                  <div className="text-3xl font-bold text-accent/15 dark:text-accent/20 font-['Cinzel'] mb-2">
+                <div className="card-base p-5 text-center h-full group">
+                  <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-accent/8 dark:bg-accent/10 flex items-center justify-center font-['Cinzel'] text-sm font-bold text-accent/50 dark:text-accent/60 group-hover:bg-accent/12 dark:group-hover:bg-accent/15 transition-colors">
                     {item.step}
                   </div>
-                  <h3 className="font-semibold text-sm text-foreground/80 mb-1">{item.title}</h3>
-                  <p className="text-[12px] text-muted leading-relaxed">{item.desc}</p>
+                  <h3 className="font-semibold text-[13px] text-foreground/80 mb-1">{item.title}</h3>
+                  <p className="text-[11px] text-muted leading-relaxed">{item.desc}</p>
                 </div>
                 {i < 3 && (
-                  <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-px bg-accent/20" />
+                  <div className="hidden md:flex absolute top-1/2 -right-1.5 z-10 items-center justify-center">
+                    <ChevronRight className="w-3.5 h-3.5 text-accent/20" />
+                  </div>
                 )}
               </motion.div>
             ))}
@@ -237,7 +245,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {testimonials.map((t, i) => (
               <motion.div
                 key={i}
@@ -245,20 +253,20 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ delay: i * 0.08 }}
-                className="card-base p-6"
+                className="card-base p-5 group"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-accent/10 dark:bg-accent/15 border border-accent/15 dark:border-accent/20 flex items-center justify-center text-xs font-bold text-accent/70 dark:text-accent/80">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-9 h-9 rounded-full bg-accent/10 dark:bg-accent/15 border border-accent/15 dark:border-accent/20 flex items-center justify-center text-[11px] font-bold text-accent/70 dark:text-accent/80 shrink-0">
                     {t.avatar}
                   </div>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground/80">{t.name}</p>
-                    <div className="flex items-center gap-2 mt-0.5">
+                  <div className="min-w-0">
+                    <p className="text-[13px] font-semibold text-foreground/80">{t.name}</p>
+                    <div className="flex items-center gap-1.5 mt-0.5">
                       <div className="flex gap-0.5">
                         {Array.from({ length: 5 }).map((_, j) => (
                           <Star
                             key={j}
-                            className={`w-3 h-3 ${
+                            className={`w-2.5 h-2.5 ${
                               j < t.rating
                                 ? "text-accent fill-accent"
                                 : "text-muted-light/30"
@@ -266,13 +274,17 @@ export default function Home() {
                           />
                         ))}
                       </div>
-                      <span className="text-[10px] text-muted-light/50">{t.paket}</span>
                     </div>
                   </div>
                 </div>
-                <p className="text-[13px] text-muted italic leading-relaxed">
+                <p className="text-[12px] text-muted italic leading-relaxed mb-3">
                   &ldquo;{t.text}&rdquo;
                 </p>
+                <div className="flex items-center gap-1.5 text-[10px] text-muted-light/50">
+                  <span className="px-2 py-0.5 bg-accent/5 dark:bg-accent/8 rounded-full text-accent/50 dark:text-accent/60 font-medium">
+                    {t.paket}
+                  </span>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -303,8 +315,7 @@ export default function Home() {
               Siap Kirim Santet?
             </h2>
             <p className="text-muted mb-8 max-w-md mx-auto text-sm">
-              Pilih paket yang sesuai kebutuhan Anda. Harga mulai dari Rp
-              15.000 saja.
+              Pilih paket yang sesuai kebutuhan Anda. Harga mulai dari Rp 15.000 saja.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
