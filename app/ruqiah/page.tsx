@@ -61,18 +61,7 @@ export default function RuqiahPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-green/10 dark:bg-[#0a2e1a]/30 rounded-full blur-[160px]" />
 
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-green/15 dark:border-green/20 bg-green/4 dark:bg-green/6 mb-8"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
-            <span className="text-[11px] font-medium text-green/70 dark:text-green/80 tracking-wider uppercase">
-              Lawan SantetOnline
-            </span>
-          </motion.div>
+
 
           {/* Icon */}
           <motion.div

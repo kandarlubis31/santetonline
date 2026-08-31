@@ -20,18 +20,7 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/15 dark:border-accent/20 bg-accent/4 dark:bg-accent/6 mb-8"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
-          <span className="text-[11px] font-medium text-accent/70 dark:text-accent/80 tracking-wider uppercase">
-            Layanan Santet Online #1 di Indonesia
-          </span>
-        </motion.div>
+
 
         {/* Icon */}
         <motion.div
