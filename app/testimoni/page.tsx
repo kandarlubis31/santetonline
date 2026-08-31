@@ -96,29 +96,25 @@ export default function TestimoniPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-10"
+          className="mb-10"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/5 dark:bg-accent/8 border border-accent/10 dark:border-accent/15 mb-4">
-            <MessageCircle className="w-3 h-3 text-accent/60" />
-            <span className="text-[11px] font-medium text-accent/60 uppercase tracking-wider">Testimoni</span>
+          <div className="flex items-end gap-4 mb-3">
+            <h1 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-accent">
+              Testimoni
+            </h1>
+            <div className="hidden sm:flex items-center gap-2 pb-1">
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="w-4 h-4 text-accent fill-accent" />
+                ))}
+              </div>
+              <span className="text-sm font-bold text-accent">4.9</span>
+              <span className="text-[12px] text-muted-light">dari 247 review</span>
+            </div>
           </div>
-          <h1 className="font-['Cinzel'] text-4xl md:text-5xl font-bold text-accent mb-3">
-            Testimoni
-          </h1>
-          <p className="text-muted max-w-md mx-auto text-sm mb-6">
+          <p className="text-muted text-[15px]">
             Kata mereka yang sudah coba layanan kami
           </p>
-
-          {/* Rating badge */}
-          <div className="inline-flex items-center gap-3 card-base px-5 py-2.5 hover:transform-none">
-            <span className="text-2xl font-bold text-accent">4.9</span>
-            <div className="flex gap-0.5">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="w-4 h-4 text-accent fill-accent" />
-              ))}
-            </div>
-            <span className="text-[13px] text-muted-light">dari 247 review</span>
-          </div>
         </motion.div>
 
         {/* Disclaimer */}

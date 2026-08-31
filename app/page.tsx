@@ -117,14 +117,10 @@ export default function Home() {
             viewport={{ once: true, margin: "-80px" }}
             className="text-center mb-14"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/5 dark:bg-accent/8 border border-accent/10 dark:border-accent/15 mb-4">
-              <Skull className="w-3 h-3 text-accent/60" />
-              <span className="text-[11px] font-medium text-accent/60 uppercase tracking-wider">Fitur Unggulan</span>
-            </div>
-            <h2 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-accent mb-3">
+            <h2 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-accent mb-2">
               Kenapa Pilih Kami?
             </h2>
-            <p className="text-muted max-w-md mx-auto text-sm">
+            <p className="text-muted text-[15px]">
               SantetOnline hadir dengan layanan terbaik untuk kebutuhan santet Anda
             </p>
           </motion.div>
@@ -175,14 +171,10 @@ export default function Home() {
             viewport={{ once: true, margin: "-80px" }}
             className="text-center mb-12"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/5 dark:bg-secondary/8 border border-secondary/10 dark:border-secondary/15 mb-4">
-              <Zap className="w-3 h-3 text-secondary/60" />
-              <span className="text-[11px] font-medium text-secondary/60 uppercase tracking-wider">Cara Kerja</span>
-            </div>
-            <h2 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-accent mb-3">
+            <h2 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-accent mb-2">
               4 Langkah Mudah
             </h2>
-            <p className="text-muted text-sm max-w-md mx-auto">
+            <p className="text-muted text-[15px]">
               Prosesnya gampang, hasilnya dijamin memuaskan (atau tidak)
             </p>
           </motion.div>
@@ -233,14 +225,10 @@ export default function Home() {
             viewport={{ once: true, margin: "-80px" }}
             className="text-center mb-12"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/5 dark:bg-accent/8 border border-accent/10 dark:border-accent/15 mb-4">
-              <Star className="w-3 h-3 text-accent/60" />
-              <span className="text-[11px] font-medium text-accent/60 uppercase tracking-wider">Testimoni</span>
-            </div>
-            <h2 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-accent mb-3">
+            <h2 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-accent mb-2">
               Kata Mereka yang Sudah Coba
             </h2>
-            <p className="text-muted text-sm">
+            <p className="text-muted text-[15px]">
               Review dari &quot;korban&quot; yang puas dengan layanan kami
             </p>
           </motion.div>

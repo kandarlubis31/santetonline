@@ -92,7 +92,7 @@ export const paketList: PaketSantet[] = [
     hargaLabel: "Rp 199.000",
     rating: 4.9,
     reviewCount: 34,
-    badge: "⭐ Premium",
+    badge: "Premium",
     color: "from-rose-500/20 to-rose-900/20",
   },
 ];

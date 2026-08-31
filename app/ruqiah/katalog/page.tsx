@@ -14,18 +14,13 @@ export default function RuqyahKatalogPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-10"
+          className="mb-10"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green/5 dark:bg-green/8 border border-green/10 dark:border-green/15 mb-4">
-            <Package className="w-3 h-3 text-green/60" />
-            <span className="text-[11px] font-medium text-green/60 uppercase tracking-wider">Pilih Paket</span>
-          </div>
-          <h1 className="font-['Cinzel'] text-4xl md:text-5xl font-bold text-green mb-3">
+          <h1 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-green mb-2">
             Katalog Ruqyah
           </h1>
-          <p className="text-muted max-w-md mx-auto text-sm">
-            Pilih paket ruqyah yang sesuai dengan kebutuhan Anda. Semua paket
-            sudah termasuk garansi kesembuhan.
+          <p className="text-muted text-[15px]">
+            Pilih paket ruqyah yang sesuai kebutuhan. Semua termasuk garansi kesembuhan.
           </p>
         </motion.div>
 

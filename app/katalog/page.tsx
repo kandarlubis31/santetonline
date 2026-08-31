@@ -15,18 +15,13 @@ export default function KatalogPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-10"
+          className="mb-10"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/5 dark:bg-accent/8 border border-accent/10 dark:border-accent/15 mb-4">
-            <Package className="w-3 h-3 text-accent/60" />
-            <span className="text-[11px] font-medium text-accent/60 uppercase tracking-wider">Pilih Paket</span>
-          </div>
-          <h1 className="font-['Cinzel'] text-4xl md:text-5xl font-bold text-accent mb-3">
+          <h1 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-accent mb-2">
             Katalog Paket
           </h1>
-          <p className="text-muted max-w-md mx-auto text-sm">
-            Pilih paket santet yang sesuai dengan kebutuhan Anda. Semua paket
-            sudah termasuk garansi kepuasan.
+          <p className="text-muted text-[15px]">
+            Pilih paket santet yang sesuai kebutuhan. Semua sudah termasuk garansi.
           </p>
         </motion.div>
 

@@ -50,17 +50,13 @@ export default function CaraKerjaPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-14"
+          className="mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/5 dark:bg-accent/8 border border-accent/10 dark:border-accent/15 mb-4">
-            <Zap className="w-3 h-3 text-accent/60" />
-            <span className="text-[11px] font-medium text-accent/60 uppercase tracking-wider">5 Langkah</span>
-          </div>
-          <h1 className="font-['Cinzel'] text-4xl md:text-5xl font-bold text-accent mb-3">
+          <h1 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-accent mb-2">
             Cara Kerja
           </h1>
-          <p className="text-muted max-w-md mx-auto text-sm">
-            Hanya 5 langkah mudah untuk mengirim santet ke siapa saja. Gampang, cepat, dan efektif.
+          <p className="text-muted text-[15px]">
+            5 langkah mudah untuk mengirim santet ke siapa saja.
           </p>
         </motion.div>
 

@@ -50,16 +50,13 @@ export default function DisclaimerPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-10"
+          className="mb-10"
         >
-          <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-secondary/10 dark:bg-secondary/15 flex items-center justify-center">
-            <AlertTriangle className="w-7 h-7 text-secondary/60 dark:text-secondary/70" />
-          </div>
-          <h1 className="font-['Cinzel'] text-4xl md:text-5xl font-bold text-accent mb-3">
+          <h1 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-secondary mb-2">
             Disclaimer
           </h1>
-          <p className="text-muted max-w-md mx-auto text-sm">
-            Baca dengan seksama sebelum menggunakan website ini
+          <p className="text-muted text-[15px]">
+            Baca sebelum pakai website ini.
           </p>
         </motion.div>
 

@@ -140,16 +140,12 @@ export default function FaqPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-10"
+          className="mb-8"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/5 dark:bg-accent/8 border border-accent/10 dark:border-accent/15 mb-4">
-            <HelpCircle className="w-3 h-3 text-accent/60" />
-            <span className="text-[11px] font-medium text-accent/60 uppercase tracking-wider">FAQ</span>
-          </div>
-          <h1 className="font-['Cinzel'] text-4xl md:text-5xl font-bold text-accent mb-3">
+          <h1 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-accent mb-2">
             FAQ
           </h1>
-          <p className="text-muted max-w-md mx-auto text-sm">
+          <p className="text-muted text-[15px]">
             Pertanyaan yang sering ditanyakan (dan jawaban yang ngawur)
           </p>
         </motion.div>

@@ -164,9 +164,6 @@ export default function RuqiahPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/5 dark:bg-accent/8 border border-accent/10 dark:border-accent/15 mb-6">
-              <span className="text-[11px] font-medium text-accent/60 uppercase tracking-wider">Perbandingan</span>
-            </div>
             <h2 className="font-['Cinzel'] text-3xl md:text-4xl font-bold mb-8">
               <span className="text-secondary">SantetOnline</span>
               <span className="text-muted/20 mx-4 text-2xl">vs</span>
@@ -239,14 +236,10 @@ export default function RuqiahPage() {
             viewport={{ once: true, margin: "-80px" }}
             className="text-center mb-14"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green/5 dark:bg-green/8 border border-green/10 dark:border-green/15 mb-4">
-              <Shield className="w-3 h-3 text-green/60" />
-              <span className="text-[11px] font-medium text-green/60 uppercase tracking-wider">Fitur</span>
-            </div>
-            <h2 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-green mb-3">
+            <h2 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-green mb-2">
               Kenapa Pilih RuqyahOnline?
             </h2>
-            <p className="text-muted max-w-md mx-auto text-sm">
+            <p className="text-muted text-[15px]">
               Solusi spiritual terbaik untuk melawan santet dari SantetOnline
             </p>
           </motion.div>
@@ -310,14 +303,10 @@ export default function RuqiahPage() {
             viewport={{ once: true, margin: "-80px" }}
             className="text-center mb-12"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green/5 dark:bg-green/8 border border-green/10 dark:border-green/15 mb-4">
-              <Star className="w-3 h-3 text-green/60" />
-              <span className="text-[11px] font-medium text-green/60 uppercase tracking-wider">Testimoni</span>
-            </div>
-            <h2 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-green mb-3">
+            <h2 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-green mb-2">
               Mereka yang Sudah Sembuh
             </h2>
-            <p className="text-muted text-sm">
+            <p className="text-muted text-[15px]">
               Testimoni dari pasien yang berhasil lepas dari santet
             </p>
           </motion.div>
