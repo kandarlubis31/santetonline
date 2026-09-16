@@ -18,7 +18,7 @@ export default function NotFound() {
         <p className="text-muted text-sm mb-2">
           Halaman yang kamu cari nggak ada atau sudah dipindah.
         </p>
-        <p className="text-[12px] text-muted-light/50 italic mb-8">
+        <p className="text-[12px] text-muted-light italic mb-8">
           Rumor terakhir: dibawa kabur sama dukunnya.
         </p>
 
@@ -39,7 +39,7 @@ export default function NotFound() {
           </Link>
         </div>
 
-        <p className="text-[11px] text-muted-light/40 mt-8 italic">
+        <p className="text-[11px] text-muted-light mt-8 italic">
           Error 404 &mdash; halaman ini mungkin dibawa kabur sama dukunnya.
         </p>
       </div>

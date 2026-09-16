@@ -104,7 +104,7 @@ function ChatBubble({ isUser, text, time }: { isUser: boolean; text: string; tim
           {text}
         </div>
         <p
-          className={`text-[10px] text-muted/40 mt-1 ${
+          className={`text-[10px] text-muted mt-1 ${
             isUser ? "text-right" : "text-left"
           }`}
         >
@@ -235,7 +235,7 @@ export default function KonsultasiPage() {
               <p className="text-sm font-semibold text-foreground/80">Ustadz Virtual</p>
               <p className="text-[11px] text-green/70 dark:text-green/80">Online sekarang</p>
             </div>
-            <div className="text-[10px] text-muted/40 bg-background/50 dark:bg-[#0a0a0f]/30 px-2.5 py-1 rounded-full">
+            <div className="text-[10px] text-muted bg-background/60 dark:bg-[#0a0a0f]/30 px-2.5 py-1 rounded-full">
               Gratis
             </div>
           </div>
@@ -243,7 +243,7 @@ export default function KonsultasiPage() {
           {/* Date divider */}
           <div className="flex items-center gap-3 px-4 py-2.5 bg-background/30">
             <div className="flex-1 h-px bg-border" />
-            <span className="text-[10px] text-muted/40 uppercase tracking-wider">Hari ini</span>
+            <span className="text-[10px] text-muted uppercase tracking-wider">Hari ini</span>
             <div className="flex-1 h-px bg-border" />
           </div>
 
@@ -286,7 +286,7 @@ export default function KonsultasiPage() {
                           style={{ animationDelay: "300ms" }}
                         />
                       </div>
-                      <span className="text-[11px] text-muted/50">mengetik...</span>
+                      <span className="text-[11px] text-muted">mengetik...</span>
                     </div>
                   </div>
                 </motion.div>
@@ -313,7 +313,7 @@ export default function KonsultasiPage() {
                 <Send className="w-4 h-4" />
               </button>
             </div>
-            <p className="text-[10px] text-muted-light/30 mt-2 text-center italic">
+            <p className="text-[10px] text-muted-light mt-2 text-center italic">
               Respon ustadz dapat bervariasi. Untuk kondisi darurat, hubungi ustadz terdekat.
             </p>
           </div>
@@ -331,7 +331,7 @@ export default function KonsultasiPage() {
               key={i}
               onClick={() => handleSend(q)}
               disabled={isTyping}
-              className="group px-3 py-2.5 card-base text-[12px] text-muted/70 hover:border-green/15 dark:hover:border-green/20 hover:text-green/70 dark:hover:text-green/80 transition-all duration-200 text-left hover:transform-none disabled:opacity-40"
+              className="group px-3 py-2.5 card-base text-[12px] text-muted hover:border-green/15 dark:hover:border-green/20 hover:text-green dark:hover:text-green/80 transition-all duration-200 text-left hover:transform-none disabled:opacity-40"
             >
               {q}
               <ArrowRight className="w-3 h-3 inline ml-1 opacity-0 group-hover:opacity-50 transition-opacity" />

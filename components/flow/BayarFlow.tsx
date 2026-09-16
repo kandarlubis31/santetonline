@@ -84,14 +84,14 @@ export default function BayarFlow({
                       ? t.stepDone
                       : i === currentStep
                         ? t.stepActive
-                        : "bg-muted-light/10 text-muted-light/40"
+                        : "bg-muted-light/10 text-muted-light"
                   }`}
                 >
                   {i < currentStep ? <CheckCircle className="w-4 h-4" /> : i + 1}
                 </div>
                 <span
                   className={`text-[12px] font-medium hidden sm:block ${
-                    i <= currentStep ? "text-foreground/70" : "text-muted-light/40"
+                    i <= currentStep ? "text-foreground/70" : "text-muted-light"
                   }`}
                 >
                   {step}
@@ -152,7 +152,7 @@ export default function BayarFlow({
                   <span className={variant === "santet" ? "relative z-10" : ""}>Konfirmasi Pesanan</span>
                 </button>
 
-                <p className="text-[11px] text-muted-light/40 text-center italic">
+                <p className="text-[11px] text-muted-light text-center italic">
                   Nama akan muncul di resi
                 </p>
               </div>
@@ -220,7 +220,7 @@ export default function BayarFlow({
 
                   <div className="mb-5 flex flex-col items-center">
                     <QRISCode value={paymentUrl} size={200} />
-                    <p className="text-[11px] text-muted-light/50 text-center italic mt-5">
+                    <p className="text-[11px] text-muted-light text-center italic mt-5">
                       Scan QR-nya pake HP &mdash; langsung diarahkan ke halaman pembayaran sukses
                     </p>
                   </div>
@@ -268,7 +268,7 @@ export default function BayarFlow({
                     )}
                   </button>
 
-                  <p className="text-[11px] text-muted-light/50 mt-3 text-center italic">
+                  <p className="text-[11px] text-muted-light mt-3 text-center italic">
                     Pembayaran diverifikasi otomatis oleh jaringan gaib kami.
                   </p>
                 </div>

@@ -94,10 +94,10 @@ function FaqItem({ item, index }: { item: typeof faqItems[0]; index: number }) {
           <p className="text-[13px] font-medium text-foreground/80 pr-6 group-hover:text-accent transition-colors">
             {item.question}
           </p>
-          <span className="text-[10px] text-accent/40 uppercase tracking-wider">{item.category}</span>
+          <span className="text-[10px] text-accent uppercase tracking-wider">{item.category}</span>
         </div>
         <ChevronDown
-          className={`w-4 h-4 text-muted-light/40 shrink-0 mt-1 transition-transform duration-200 ${
+          className={`w-4 h-4 text-muted-light shrink-0 mt-1 transition-transform duration-200 ${
             isOpen ? "rotate-180 text-accent/60" : ""
           }`}
         />
@@ -166,7 +166,7 @@ export default function FaqPage() {
           className="mb-4"
         >
           <div className="relative">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-light/40" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-light" />
             <input
               type="text"
               value={search}
@@ -208,8 +208,8 @@ export default function FaqPage() {
           </AnimatePresence>
           {filtered.length === 0 && (
             <div className="text-center py-12">
-              <Search className="w-8 h-8 text-muted-light/20 mx-auto mb-3" />
-              <p className="text-[13px] text-muted-light/50">
+              <Search className="w-8 h-8 text-muted-light/60 mx-auto mb-3" />
+              <p className="text-[13px] text-muted-light">
                 Tidak ada pertanyaan yang cocok dengan pencarian Anda
               </p>
             </div>
@@ -224,11 +224,11 @@ export default function FaqPage() {
           className="mt-10"
         >
           <div className="card-base p-5 text-center hover:transform-none">
-            <MessageCircle className="w-5 h-5 text-accent/40 mx-auto mb-2" />
+            <MessageCircle className="w-5 h-5 text-accent/70 mx-auto mb-2" />
             <p className="text-[13px] text-muted mb-2">
               Masih ada pertanyaan? Hubungi customer service gaib kami
             </p>
-            <p className="text-[12px] text-muted-light/50">
+            <p className="text-[12px] text-muted-light">
               WhatsApp: 0812-XXXX-XXXX (24 jam, masuk ke antrean alam gaib)
             </p>
           </div>

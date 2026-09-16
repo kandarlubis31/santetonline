@@ -163,8 +163,8 @@ export default function HeroSection() {
           transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="text-[10px] text-accent/25 dark:text-accent/30 uppercase tracking-widest">Scroll</span>
-          <ArrowDown className="w-4 h-4 text-accent/25 dark:text-accent/30" />
+          <span className="text-[10px] text-muted dark:text-accent/50 uppercase tracking-widest">Scroll</span>
+          <ArrowDown className="w-4 h-4 text-muted/80 dark:text-accent/50" />
         </motion.div>
       </motion.div>
     </section>

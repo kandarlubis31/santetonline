@@ -52,7 +52,7 @@ export default function KatalogPage() {
                   <strong className="text-foreground/70">Tips:</strong> Untuk pengalaman terbaik, kami rekomendasikan
                   paket &quot;Santet Delivery&quot; karena efeknya paling terasa.
                 </p>
-                <p className="text-[11px] text-muted-light/60 italic">
+                <p className="text-[11px] text-muted-light italic">
                   Harga belum termasuk pajak gaib (PPN 11%)
                 </p>
               </div>

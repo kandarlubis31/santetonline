@@ -12,7 +12,7 @@ export default function DisclaimerBanner() {
     >
       <AlertTriangle className="w-4 h-4 text-secondary/60 dark:text-secondary/70 shrink-0 mt-0.5" />
       <div className="text-[13px] text-muted leading-relaxed">
-        <span className="font-semibold text-secondary/70 dark:text-secondary/80">Catatan Layanan</span>{" "}
+        <span className="font-semibold text-secondary dark:text-secondary/90">Catatan Layanan</span>{" "}
         Ritual kami bekerja lewat frekuensi gaib yang hasilnya dapat{" "}
         <strong>bervariasi pada setiap target</strong>, tergantung ketebalan aura
         dan tingkat kepercayaan.

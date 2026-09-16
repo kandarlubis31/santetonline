@@ -41,7 +41,7 @@ export default function CountdownTimer({ initialMinutes = 15, onExpire }: Countd
           expired
             ? "text-secondary font-bold"
             : isUrgent
-              ? "text-secondary/80"
+              ? "text-secondary"
               : "text-muted-light"
         }`}
       >

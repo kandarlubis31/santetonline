@@ -74,7 +74,8 @@ layout.tsx
 
 ## Theming
 - **Dark (default)**: bg #0a0a0f, accent #d4af37, secondary #8b0000
-- **Light**: bg #f5f2eb, accent #b8860b, secondary #dc2626
+- **Light (WCAG AA)**: bg #f5f2eb, accent #8a620a (5.6:1), secondary #c81e1e (4.9:1), muted #57525c (7.5:1), muted-light #6f6a76 (4.6:1)
+- Aturan kontras: teks bermakna **nggak boleh alpha rendah** (`text-accent/40` dll ≈ 1.5–3:1 di light) — pakai solid token atau ≥/70; alpha rendah hanya buat ikon dekoratif yang redundan dengan label
 - `themeInitScript` di layout set class `.dark` sebelum first paint; urutan resolve: localStorage `santetonline_theme` → `prefers-color-scheme` → dark
 - **KRITIS**: `@custom-variant dark (&:where(.dark, .dark *));` di globals.css — tanpa ini variant `dark:` Tailwind v4 ngikutin OS, bukan class → overlay near-black bocor ke light mode
 
@@ -108,7 +109,7 @@ layout.tsx
 - Typography: Cinzel (headings), Inter (body)
 - **Mobile-first**: judul besar mulai `text-4xl` di <sm (Cinzel lebar), `min-h-svh` bukan `min-h-screen` (address bar mobile), input ≥16px di mobile (iOS auto-zoom), CTA full-width di mobile
 - **Loading skeletons**: route data-flow (katalog/bayar/success/konsultasi, santet+ruqiah) punya `loading.tsx` tipis yang memakai komposisi dari `components/Skeletons.tsx`; halaman hero sengaja tanpa skeleton (punya entrance animation sendiri)
-- Aksesibilitas: `:focus-visible` ring emas, `prefers-reduced-motion` mematikan animasi CSS, aria-expanded di accordion & hamburger, Escape tutup menu mobile
+- Aksesibilitas: `:focus-visible` ring token accent, `prefers-reduced-motion` mematikan animasi CSS, aria-expanded di accordion & hamburger, Escape tutup menu mobile, kontras light mode WCAG AA (audit Sep 2026)
 - Class bersama: `.card-base`, `.btn-primary`, `.section-padding` (dibungkus `@layer components`)
 
 ## Deployment

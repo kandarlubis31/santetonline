@@ -42,7 +42,7 @@ export default function Footer() {
             </p>
             <Link
               href="/ruqiah"
-              className="inline-flex items-center gap-1.5 text-[12px] text-green/60 hover:text-green transition-colors"
+              className="inline-flex items-center gap-1.5 text-[12px] text-green hover:text-green/80 transition-colors"
             >
               <Shield className="w-3 h-3" />
               Tersedia juga: RuqyahOnline
@@ -110,10 +110,10 @@ export default function Footer() {
         {/* Bottom */}
         <div className="section-divider mb-6" />
         <div className="flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-[11px] text-muted-light/50">
+          <p className="text-[11px] text-muted-light">
             &copy; {new Date().getFullYear()} SantetOnline. Semua hak dilindungi (oleh makhluk gaib).
           </p>
-          <p className="text-[11px] text-muted-light/40 italic flex items-center gap-1">
+          <p className="text-[11px] text-muted-light italic flex items-center gap-1">
             Dibuat dengan <Heart className="w-3 h-3 text-secondary/40" /> dan sedikit ilmu gaib
           </p>
         </div>
