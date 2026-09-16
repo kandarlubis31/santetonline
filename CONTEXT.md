@@ -18,9 +18,9 @@ app/
 ├ page.tsx                    # Landing page (HeroSection + sections)
 ├ not-found.tsx               # 404 bertema (skull + CTA)
 ├ globals.css                 # CSS variables (:root + .dark), @custom-variant dark, utilities
-├ katalog/page.tsx            # Katalog paket santet (4 paket)
-├ bayar/[paketId]/page.tsx    # Wrapper tipis → components/flow/BayarFlow
-├ success/page.tsx            # Wrapper tipis → components/flow/SuccessFlow
+├ katalog/page.tsx            # Katalog paket santet (4 paket) + loading.tsx
+├ bayar/[paketId]/page.tsx    # Wrapper tipis → components/flow/BayarFlow + loading.tsx
+├ success/page.tsx            # Wrapper tipis → components/flow/SuccessFlow + loading.tsx
 ├ api/konsultasi/route.ts     # POST proxy Groq (server-side, key aman)
 ├ cara-kerja|testimoni|faq|tentang|disclaimer/page.tsx
 └ ruqiah/                     # RuqyahOnline section (tema hijau)
@@ -42,6 +42,7 @@ components/
 ├ QRISCode.tsx                # QR canvas, regenerate saat toggle tema
 ├ CountdownTimer.tsx          # 15 menit, onExpire → redirect katalog
 ├ DisclaimerBanner.tsx        # Banner "Catatan Layanan"
+├ Skeletons.tsx               # Skeleton bersama loading.tsx (server-safe, nol JS)
 ├ SmokeEffect.tsx             # Ambient smoke (dipakai HeroSection)
 └ flow/                       # Flow bayar/success BERSAMA (santet vs ruqiah via variant)
     ├── flowTheme.ts          # Semua perbedaan class antar-varian di 1 tempat
@@ -106,6 +107,7 @@ layout.tsx
 - Semua halaman `"use client"` (Framer Motion); metadata hanya di root layout
 - Typography: Cinzel (headings), Inter (body)
 - **Mobile-first**: judul besar mulai `text-4xl` di <sm (Cinzel lebar), `min-h-svh` bukan `min-h-screen` (address bar mobile), input ≥16px di mobile (iOS auto-zoom), CTA full-width di mobile
+- **Loading skeletons**: route data-flow (katalog/bayar/success/konsultasi, santet+ruqiah) punya `loading.tsx` tipis yang memakai komposisi dari `components/Skeletons.tsx`; halaman hero sengaja tanpa skeleton (punya entrance animation sendiri)
 - Aksesibilitas: `:focus-visible` ring emas, `prefers-reduced-motion` mematikan animasi CSS, aria-expanded di accordion & hamburger, Escape tutup menu mobile
 - Class bersama: `.card-base`, `.btn-primary`, `.section-padding` (dibungkus `@layer components`)
 
