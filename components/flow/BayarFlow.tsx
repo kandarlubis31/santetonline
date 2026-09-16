@@ -138,7 +138,7 @@ export default function BayarFlow({
                     onChange={(e) => setNama(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleSubmitNama()}
                     placeholder="Contoh: Budi Santoso"
-                    className={`w-full bg-background/50 dark:bg-[#0a0a0f]/40 border border-border rounded-xl px-4 py-3 text-[14px] text-foreground/80 placeholder-muted-light/40 focus:outline-none ${t.inputFocus} transition-colors`}
+                    className={`w-full bg-background/50 dark:bg-[#0a0a0f]/40 border border-border rounded-xl px-4 py-3 text-base sm:text-[14px] text-foreground/80 placeholder-muted-light/40 focus:outline-none ${t.inputFocus} transition-colors`}
                     autoFocus
                   />
                 </div>
