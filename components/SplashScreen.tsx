@@ -251,6 +251,27 @@ export default function SplashScreen({
           style={{ borderColor: "var(--splash-border)" }}
         />
       </motion.div>
+
+      {/* Skip button — dipanggil onExitStart: konten langsung reveal,
+          splash exit-fade via provider (aman walau timer juga sempat firing) */}
+      <motion.button
+        type="button"
+        onClick={onExitStart}
+        initial={{ opacity: 0 }}
+        animate={phase >= 2 ? { opacity: 1 } : {}}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        aria-label="Lewati intro dan masuk ke situs"
+        className="absolute bottom-6 right-6 z-10 px-3 py-2 text-[11px] uppercase tracking-widest cursor-pointer transition-colors hover:opacity-100 focus-visible:opacity-100"
+        style={{ color: "var(--splash-text-ghost)" }}
+        onMouseEnter={(e) =>
+          (e.currentTarget.style.color = "var(--splash-text-muted)")
+        }
+        onMouseLeave={(e) =>
+          (e.currentTarget.style.color = "var(--splash-text-ghost)")
+        }
+      >
+        Lewati &rarr;
+      </motion.button>
     </motion.div>
   );
 }
