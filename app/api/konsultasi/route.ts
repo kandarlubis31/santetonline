@@ -48,6 +48,40 @@ function pickFallback(): string {
   return fallbackReplies[Math.floor(Math.random() * fallbackReplies.length)];
 }
 
+// ── Rate limit per IP — blokir abuse SEBELUM nyentuh API Groq (hemat token) ──
+// In-memory per instance lambda: cukup buat project ini & gratis. Kalau nanti
+// butuh limit terdistribusi antar-instance, naik ke Redis (mis. Upstash free tier).
+const RATE_PER_MIN = 10; // max request per menit per IP
+const RATE_PER_HOUR = 60; // max request per jam per IP
+const buckets = new Map<string, { count: number; resetAt: number }>();
+
+function getIp(req: NextRequest): string {
+  return (
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    req.headers.get("x-real-ip") ||
+    "unknown"
+  );
+}
+
+function hit(key: string, limit: number, windowMs: number): { ok: boolean; retryAfterSec: number } {
+  const now = Date.now();
+  // Prune berkala biar map nggak bengkak di lambda yang umur panjang
+  if (buckets.size > 2000) {
+    for (const [k, v] of buckets) {
+      if (v.resetAt < now) buckets.delete(k);
+    }
+  }
+  const entry = buckets.get(key);
+  if (!entry || entry.resetAt < now) {
+    buckets.set(key, { count: 1, resetAt: now + windowMs });
+    return { ok: true, retryAfterSec: 0 };
+  }
+  entry.count += 1;
+  return entry.count > limit
+    ? { ok: false, retryAfterSec: Math.ceil((entry.resetAt - now) / 1000) }
+    : { ok: true, retryAfterSec: 0 };
+}
+
 type ChatMessage = { role: "user" | "assistant"; content: string };
 
 function trimHistory(messages: ChatMessage[]): ChatMessage[] {
@@ -73,6 +107,23 @@ function sanitizeReply(raw: string): string {
 }
 
 export async function POST(req: NextRequest) {
+  // Rate limit paling awal — request yang diblokir nggak sampai ke Groq
+  const ip = getIp(req);
+  const perMin = hit(`${ip}:m`, RATE_PER_MIN, 60_000);
+  const perHour = perMin.ok ? hit(`${ip}:h`, RATE_PER_HOUR, 3_600_000) : { ok: true, retryAfterSec: 0 };
+
+  if (!perMin.ok || !perHour.ok) {
+    const isHour = !perHour.ok;
+    const retryAfterSec = isHour ? perHour.retryAfterSec : perMin.retryAfterSec;
+    const reply = isHour
+      ? "Kuota konsultasi gratis untuk jam ini sudah habis ya. Santai dulu, balik lagi nanti — insyaallah tetap kami layani."
+      : `Sabar ya... konsultasinya lagi ramai. Coba lagi dalam ±${retryAfterSec} detik.`;
+    return NextResponse.json(
+      { reply, source: "rate_limited" },
+      { status: 429, headers: { "Retry-After": String(retryAfterSec) } }
+    );
+  }
+
   let body: { messages?: ChatMessage[] };
   try {
     body = await req.json();
