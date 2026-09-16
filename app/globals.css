@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
+/* KRITIS: Tanpa ini, variant `dark:` di Tailwind v4 ngikutin prefers-color-scheme
+   OS — bukan class `.dark` di <html>. Akibatnya overlay/gradient near-black
+   (dark:bg-[#0a0a0f] dll) tetap aktif saat situs light (OS dark), dan hilang
+   saat situs dark (OS light). Baris ini mengikat variant `dark:` ke class. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #f5f2eb;
   --foreground: #1a1520;
