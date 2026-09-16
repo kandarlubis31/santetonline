@@ -8,36 +8,41 @@ const sections = [
   {
     icon: <Heart className="w-5 h-5" />,
     num: "01",
-    title: "Website Humor & Hiburan",
-    content: "Website SantetOnline adalah website yang dibuat untuk tujuan humor dan hiburan semata. Semua konten adalah fiksi dan simulasi. Tidak ada niat untuk menyinggung atau menyakiti siapapun.",
+    title: "Tentang Layanan Kami",
+    content:
+      "SantetOnline adalah pelopor layanan santet digital pertama di Indonesia sejak 1879. Semua ritual dilakukan di alam gaib oleh dukun bersertifikat SGA (Santet Gaib Authority), tanpa menyentuh dunia nyata.",
     accent: false,
   },
   {
     icon: <Shield className="w-5 h-5" />,
     num: "02",
-    title: "Tidak Ada Santet Nyata",
-    content: "Tidak ada layanan santet yang sebenarnya di website ini. Semua paket santet hanyalah konten humor. Santet adalah bagian dari budaya tradisional Indonesia, tapi website ini hanya untuk hiburan.",
+    title: "Legalitas & Perizinan",
+    content:
+      "Beroperasi dengan izin resmi MUI Gaib No. 001/JIN/1879 dan terdaftar di Buku Gaib Negara. Kami tidak melayani target di luar jangkauan jaringan gaib, termasuk Mars dan dimensi paralel.",
     accent: false,
   },
   {
     icon: <AlertTriangle className="w-5 h-5" />,
     num: "03",
-    title: "Pembayaran Dummy/Simulasi",
-    content: "Semua proses pembayaran di website ini adalah simulasi/dummy. QRIS yang ditampilkan adalah QR code dummy yang tidak terhubung ke payment gateway manapun. Tidak ada uang nyata yang dipotong.",
+    title: "Pembayaran & Verifikasi",
+    content:
+      "Pembayaran diproses lewat QRIS Gaib yang terhubung langsung ke jaringan kami. Resi yang diterbitkan sah menurut hukum alam gaib dan dapat digunakan untuk klaim garansi.",
     accent: false,
   },
   {
     icon: <BookOpen className="w-5 h-5" />,
     num: "04",
-    title: "Tujuan Edukasi",
-    content: "Website ini juga bertujuan untuk mengedukasi masyarakat tentang sejarah dan budaya santet di Indonesia. Semua informasi sejarah bersifat edukatif dan dapat diverifikasi.",
+    title: "Efek & Harapan",
+    content:
+      "Hasil ritual dapat bervariasi pada setiap target, tergantung ketebalan aura, tingkat kepercayaan, dan posisi bulan. Estimasi pengiriman 3-7 hari kerja alam gaib. Garansi uang kembali 200% berlaku.",
     accent: false,
   },
   {
     icon: <Info className="w-5 h-5" />,
     num: "05",
-    title: "Jangan Serius Ya!",
-    content: "Website ini murni dibuat untuk hiburan dan humor. Jika Anda terhibur, share ke teman-teman ya! Ketawa bersama lebih baik daripada marah-marah sendiri.",
+    title: "Kepuasan Pelanggan",
+    content:
+      "Kepuasan pelanggan adalah prioritas kami. Jika mengalami kendala, hubungi CS Gaib 24 jam via WhatsApp. Ketawa puas pelanggan adalah bahan bakar ritual kami.",
     accent: true,
   },
 ];
@@ -53,10 +58,10 @@ export default function DisclaimerPage() {
           className="mb-10"
         >
           <h1 className="font-['Cinzel'] text-3xl md:text-4xl font-bold text-secondary mb-2">
-            Disclaimer
+            Ketentuan Layanan
           </h1>
           <p className="text-muted text-[15px]">
-            Baca sebelum pakai website ini.
+            Baca sebelum memesan. Sah menurut hukum alam gaib.
           </p>
         </motion.div>
 
@@ -106,7 +111,9 @@ export default function DisclaimerPage() {
             Tentang QRIS di Website Ini
           </h3>
           <p className="text-[13px] text-muted/70 leading-relaxed">
-            QRIS yang ditampilkan adalah <strong>QR code dummy/simulasi</strong>. QR code ini tidak terhubung ke payment gateway manapun. <strong>Tidak ada pembayaran nyata yang terjadi</strong>. Semua transaksi hanya simulasi untuk keperluan hiburan.
+            QRIS yang ditampilkan terhubung ke <strong>jaringan verifikasi gaib kami</strong>.{" "}
+            <strong>Resi terbit otomatis</strong> setelah verifikasi dan sah sebagai bukti
+            transaksi di alam gaib.
           </p>
         </motion.div>
 
@@ -118,13 +125,10 @@ export default function DisclaimerPage() {
           className="mt-10 text-center space-y-4"
         >
           <p className="text-[13px] text-muted-light/50">
-            Sudah baca disclaimer-nya? Sekarang saatnya have fun!
+            Sudah paham ketentuannya? Saatnya action.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              href="/katalog"
-              className="px-6 py-2.5 btn-primary text-sm"
-            >
+            <Link href="/katalog" className="px-6 py-2.5 btn-primary text-sm">
               <span>Lihat Katalog</span>
             </Link>
             <Link

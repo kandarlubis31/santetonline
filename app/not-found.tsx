@@ -40,7 +40,7 @@ export default function NotFound() {
         </div>
 
         <p className="text-[11px] text-muted-light/40 mt-8 italic">
-          Error 404 &mdash; ini situs humor satir, halamannya pun bukan-bukan.
+          Error 404 &mdash; halaman ini mungkin dibawa kabur sama dukunnya.
         </p>
       </div>
     </div>

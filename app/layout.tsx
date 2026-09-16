@@ -24,8 +24,8 @@ const themeInitScript = `(function(){try{var t=localStorage.getItem("santetonlin
 export const metadata: Metadata = {
   title: "SantetOnline - Santet Online? Siap Kirim ke Mana Aja!",
   description:
-    "Layanan santet online pertama di Indonesia. Paket lengkap, harga bersahabat, hasil memuaskan. Disclaimer: Ini cuma humor satir, jangan serius ya.",
-  keywords: ["santet", "santet online", "ilmu hitam", "dukun", "humor", "satir"],
+    "Layanan santet online pertama di Indonesia. Paket lengkap, harga bersahabat, hasil memuaskan. Melayani se-Indonesia sejak 1879.",
+  keywords: ["santet", "santet online", "ilmu hitam", "dukun", "dukun digital", "ruqyah online"],
   openGraph: {
     title: "SantetOnline - Santet Online? Siap Kirim ke Mana Aja!",
     description: "Layanan santet online pertama di Indonesia. Paket lengkap, harga bersahabat.",

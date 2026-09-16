@@ -8,7 +8,7 @@ const funnyMessages = [
   "Target akan merasakan efek dalam 3-7 hari kerja",
   "Jangan kaget kalau target tiba-tiba hafal sholawat",
   "Efek samping mungkin termasuk: ngomong sendiri di kamar mandi",
-  "Garansi: Kalau gagal, uang kembali 200% (bercanda)",
+  "Garansi: Kalau gagal, uang kembali 200% (syarat & ketentuan gaib berlaku)",
 ];
 
 export default function SuccessPage() {
@@ -36,7 +36,7 @@ export default function SuccessPage() {
         { icon: "package", text: "Santet sampai di target", time: "Estimasi 3-7 hari", active: false },
       ]}
       secondaryCta={{ href: "/ruqiah", label: "Ruqyah Online" }}
-      footerNote="Semua transaksi adalah simulasi/dummy. Ini cuma humor."
+      footerNote="Semua transaksi tercatat di Buku Gaib Negara. Estimasi pengiriman 3-7 hari kerja."
     />
   );
 }

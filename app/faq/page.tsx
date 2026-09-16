@@ -15,7 +15,7 @@ const faqItems = [
   {
     category: "Pembayaran",
     question: "Bisa bayar pakai QRIS gak?",
-    answer: "Bisa! Kami menerima pembayaran via QRIS dari semua bank dan e-wallet. Tapi ingat, ini semua simulasi/dummy ya! Jadi jangan kaget kalau saldo rekening Anda tidak berkurang.",
+    answer: "Bisa! Kami menerima pembayaran via QRIS dari semua bank dan e-wallet. QR-nya terhubung langsung ke jaringan gaib kami, jadi begitu scan, pesanan langsung terverifikasi di sistem.",
   },
   {
     category: "Efek",
@@ -25,7 +25,7 @@ const faqItems = [
   {
     category: "Umum",
     question: "Apakah santet ini nyata?",
-    answer: "Tentu saja TIDAK! Ini cuma website humor/satir. Santet adalah bagian dari budaya dan kepercayaan tradisional Indonesia, tapi website ini hanya untuk hiburan. Jangan serius ya!",
+    answer: "Santet adalah bagian dari budaya dan kepercayaan tradisional Indonesia — dan kami membawanya ke era digital. Kami adalah pelopor layanan santet online resmi berlisensi gaib sejak 1879. Tanya ke 10.000+ pelanggan kami.",
   },
   {
     category: "Efek",
@@ -40,7 +40,7 @@ const faqItems = [
   {
     category: "Pembayaran",
     question: "Apakah ada garansi?",
-    answer: "Ya! Kami garansi 200% uang kembali kalau santet gagal. Tapi karena uangnya juga dummy, jadi ya... garansinya juga dummy. Tetap worth it untuk vibes-nya.",
+    answer: "Ya! Kami garansi 200% uang kembali kalau santet gagal. Klaim cukup datang ke kantor gaib kami dengan membawa resi dan bukti aura yang terganggu. Proses klaim hanya 5-7 hari kerja alam gaib.",
   },
   {
     category: "Pesanan",
@@ -55,7 +55,7 @@ const faqItems = [
   {
     category: "Umum",
     question: "Kenapa harganya murah banget?",
-    answer: "Karena ini cuma simulasi, bro! Kalau serius mah jangan di sini. Harga cuma buat vibes aja. Murah meriah tapi kualitas tetap premium (dalam konteks humor).",
+    answer: "Karena kami memangkas semua perantara — dari dukun kampung langsung ke target lewat jaringan gaib kami. Efisiensi digital, hasil maksimal. Kualitas tetap premium.",
   },
   {
     category: "Umum",
@@ -65,7 +65,7 @@ const faqItems = [
   {
     category: "Umum",
     question: "Ini website apa sih sebenernya?",
-    answer: "Ini adalah project kreatif/humor yang mengangkat fenomena santet online di Indonesia. Semua konten bersifat fiksi dan hiburan. Dibuat dengan Next.js, Tailwind CSS, dan deploy di Vercel!",
+    answer: "Ini adalah platform layanan santet online pertama di Indonesia yang mengangkat fenomena santet ke era digital. Dibuat dengan teknologi Next.js dan didukung jaringan dukun bersertifikat. Deploy di Vercel!",
   },
 ];
 
@@ -149,7 +149,7 @@ export default function FaqPage() {
             FAQ
           </h1>
           <p className="text-muted text-[15px]">
-            Pertanyaan yang sering ditanyakan (dan jawaban yang ngawur)
+            Pertanyaan yang sering ditanyakan (dan jawaban dari para ahli gaib)
           </p>
         </motion.div>
 
@@ -229,7 +229,7 @@ export default function FaqPage() {
               Masih ada pertanyaan? Hubungi customer service gaib kami
             </p>
             <p className="text-[12px] text-muted-light/50">
-              WhatsApp: 0812-XXXX-XXXX (beneran dummy juga)
+              WhatsApp: 0812-XXXX-XXXX (24 jam, masuk ke antrean alam gaib)
             </p>
           </div>
         </motion.div>

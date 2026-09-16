@@ -104,7 +104,7 @@ export default function RuqiahPage() {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="text-xs text-muted-light mb-12 italic"
           >
-            *Disclaimer: Ini cuma humor satir, jangan serius ya
+            *Berizin resmi dari MUI Gaib No. 001/JIN/1879
           </motion.p>
 
           {/* Stats */}
@@ -219,7 +219,7 @@ export default function RuqiahPage() {
             </div>
 
             <p className="text-[12px] text-muted-light/40 mt-5 italic">
-              Keduanya sama-sama simulasi. Tapi kalau mau pilih yang mana, terserah Anda.
+              Keduanya sama-sama ampuh. Tapi kalau mau pilih yang mana, terserah Anda.
             </p>
           </motion.div>
         </div>
