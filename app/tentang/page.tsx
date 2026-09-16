@@ -54,7 +54,7 @@ export default function TentangPage() {
                 <h2 className="font-['Cinzel'] text-lg font-bold text-accent">
                   Sejarah Santet di Indonesia
                 </h2>
-                <p className="text-[10px] text-muted-light/40 uppercase tracking-wider flex items-center gap-1">
+                <p className="text-[10px] text-muted-light uppercase tracking-wider flex items-center gap-1">
                   <Calendar className="w-3 h-3" />
                   Era Kerajaan Nusantara
                 </p>
@@ -89,7 +89,7 @@ export default function TentangPage() {
                 <h2 className="font-['Cinzel'] text-lg font-bold text-accent">
                   Istilah di Berbagai Daerah
                 </h2>
-                <p className="text-[10px] text-muted-light/40 uppercase tracking-wider flex items-center gap-1">
+                <p className="text-[10px] text-muted-light uppercase tracking-wider flex items-center gap-1">
                   <MapPin className="w-3 h-3" />
                   Nusantara
                 </p>
@@ -107,9 +107,9 @@ export default function TentangPage() {
                   className="bg-background/50 dark:bg-[#0a0a0f]/40 rounded-xl p-3.5 border border-border/50 dark:border-border group hover:border-accent/15 dark:hover:border-accent/20 transition-all duration-300"
                 >
                   <h4 className="text-[13px] font-semibold text-accent/70 dark:text-accent/80 mb-1">
-                    {item.daerah} &mdash; <em className="font-normal text-accent/50 dark:text-accent/60">{item.istilah}</em>
+                    {item.daerah} &mdash; <em className="font-normal text-accent dark:text-accent/70">{item.istilah}</em>
                   </h4>
-                  <p className="text-[12px] text-muted/70 leading-relaxed">{item.desc}</p>
+                  <p className="text-[12px] text-muted leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -131,7 +131,7 @@ export default function TentangPage() {
                 <h2 className="font-['Cinzel'] text-lg font-bold text-accent">
                   Fenomena Santet Online
                 </h2>
-                <p className="text-[10px] text-muted-light/40 uppercase tracking-wider flex items-center gap-1">
+                <p className="text-[10px] text-muted-light uppercase tracking-wider flex items-center gap-1">
                   <Calendar className="w-3 h-3" />
                   Era Digital 2024
                 </p>
@@ -187,10 +187,10 @@ export default function TentangPage() {
           transition={{ delay: 0.3 }}
           className="mt-8 bg-background/50 dark:bg-[#0a0a0f]/40 border border-border/50 dark:border-border rounded-2xl p-5"
         >
-          <h3 className="font-['Cinzel'] text-sm font-bold text-accent/50 dark:text-accent/60 mb-3 uppercase tracking-wider">
+          <h3 className="font-['Cinzel'] text-sm font-bold text-accent dark:text-accent/60 mb-3 uppercase tracking-wider">
             Sumber Referensi
           </h3>
-          <ul className="space-y-1.5 text-[12px] text-muted-light/50">
+          <ul className="space-y-1.5 text-[12px] text-muted-light">
             <li className="flex items-start gap-2">
               <span className="w-1 h-1 rounded-full bg-accent/20 shrink-0 mt-1.5" />
               Sejarah santet di era kerajaan Nusantara (Majapahit, Sriwijaya)

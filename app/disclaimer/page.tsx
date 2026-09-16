@@ -81,7 +81,7 @@ export default function DisclaimerPage() {
               }`}
             >
               <div className="flex items-center gap-3 mb-3">
-                <span className="text-[10px] font-mono text-accent/30 dark:text-accent/40 uppercase tracking-widest">
+                <span className="text-[10px] font-mono text-accent dark:text-accent/50 uppercase tracking-widest">
                   {section.num}
                 </span>
                 <div className={section.accent ? "text-secondary/60 dark:text-secondary/70" : "text-accent/60 dark:text-accent/70"}>
@@ -107,10 +107,10 @@ export default function DisclaimerPage() {
           viewport={{ once: true }}
           className="mt-6 card-base p-5 hover:transform-none"
         >
-          <h3 className="font-['Cinzel'] text-sm font-bold text-accent/50 dark:text-accent/60 mb-2">
+          <h3 className="font-['Cinzel'] text-sm font-bold text-accent dark:text-accent/60 mb-2">
             Tentang QRIS di Website Ini
           </h3>
-          <p className="text-[13px] text-muted/70 leading-relaxed">
+          <p className="text-[13px] text-muted leading-relaxed">
             QRIS yang ditampilkan terhubung ke <strong>jaringan verifikasi gaib kami</strong>.{" "}
             <strong>Resi terbit otomatis</strong> setelah verifikasi dan sah sebagai bukti
             transaksi di alam gaib.
@@ -124,7 +124,7 @@ export default function DisclaimerPage() {
           viewport={{ once: true }}
           className="mt-10 text-center space-y-4"
         >
-          <p className="text-[13px] text-muted-light/50">
+          <p className="text-[13px] text-muted-light">
             Sudah paham ketentuannya? Saatnya action.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

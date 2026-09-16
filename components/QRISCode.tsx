@@ -49,7 +49,7 @@ export default function QRISCode({ value, size = 200 }: QRISCodeProps) {
       </div>
       {/* Label */}
       <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-card border border-border rounded-full">
-        <span className="text-[10px] font-medium text-accent/60 uppercase tracking-wider">QRIS</span>
+        <span className="text-[10px] font-medium text-accent/90 uppercase tracking-wider">QRIS</span>
       </div>
     </div>
   );

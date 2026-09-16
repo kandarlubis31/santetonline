@@ -189,7 +189,7 @@ export default function Home() {
                 className="relative"
               >
                 <div className="card-base p-5 text-center h-full group">
-                  <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-accent/8 dark:bg-accent/10 flex items-center justify-center font-['Cinzel'] text-sm font-bold text-accent/50 dark:text-accent/60 group-hover:bg-accent/12 dark:group-hover:bg-accent/15 transition-colors">
+                  <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-accent/8 dark:bg-accent/10 flex items-center justify-center font-['Cinzel'] text-sm font-bold text-accent/90 dark:text-accent/80 group-hover:bg-accent/12 dark:group-hover:bg-accent/15 transition-colors">
                     {item.step}
                   </div>
                   <h3 className="font-semibold text-[13px] text-foreground/80 mb-1">{item.title}</h3>
@@ -197,7 +197,7 @@ export default function Home() {
                 </div>
                 {i < 3 && (
                   <div className="hidden md:flex absolute top-1/2 -right-1.5 z-10 items-center justify-center">
-                    <ChevronRight className="w-3.5 h-3.5 text-accent/20" />
+                    <ChevronRight className="w-3.5 h-3.5 text-accent/60" />
                   </div>
                 )}
               </motion.div>
@@ -207,7 +207,7 @@ export default function Home() {
           <div className="text-center mt-8">
             <Link
               href="/cara-kerja"
-              className="inline-flex items-center gap-1.5 text-accent/50 hover:text-accent transition-colors text-[13px] font-medium"
+              className="inline-flex items-center gap-1.5 text-accent/90 hover:text-accent transition-colors text-[13px] font-medium"
             >
               Lihat Detail <ArrowRight className="w-3.5 h-3.5" />
             </Link>
@@ -256,7 +256,7 @@ export default function Home() {
                             className={`w-2.5 h-2.5 ${
                               j < t.rating
                                 ? "text-accent fill-accent"
-                                : "text-muted-light/30"
+                                : "text-muted-light"
                             }`}
                           />
                         ))}
@@ -267,8 +267,8 @@ export default function Home() {
                 <p className="text-[12px] text-muted italic leading-relaxed mb-3">
                   &ldquo;{t.text}&rdquo;
                 </p>
-                <div className="flex items-center gap-1.5 text-[10px] text-muted-light/50">
-                  <span className="px-2 py-0.5 bg-accent/5 dark:bg-accent/8 rounded-full text-accent/50 dark:text-accent/60 font-medium">
+                <div className="flex items-center gap-1.5 text-[10px] text-muted-light">
+                  <span className="px-2 py-0.5 bg-accent/10 dark:bg-accent/8 rounded-full text-accent dark:text-accent/80 font-medium">
                     {t.paket}
                   </span>
                 </div>
@@ -279,7 +279,7 @@ export default function Home() {
           <div className="text-center mt-8">
             <Link
               href="/testimoni"
-              className="inline-flex items-center gap-1.5 text-accent/50 hover:text-accent transition-colors text-[13px] font-medium"
+              className="inline-flex items-center gap-1.5 text-accent/90 hover:text-accent transition-colors text-[13px] font-medium"
             >
               Lihat Semua Testimoni <ArrowRight className="w-3.5 h-3.5" />
             </Link>

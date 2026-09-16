@@ -152,7 +152,7 @@ function SuccessContent(props: SuccessFlowProps) {
             <div className="bg-background/50 dark:bg-[#0a0a0f]/60 rounded-xl p-4 mb-5 text-left">
               {/* Receipt header */}
               <div className="text-center pb-3 mb-3 border-b border-border border-dashed">
-                <p className="text-[11px] text-muted-light/50 uppercase tracking-wider mb-1">{refLabel}</p>
+                <p className="text-[11px] text-muted-light uppercase tracking-wider mb-1">{refLabel}</p>
                 <code className={`${t.refText} font-mono text-base tracking-wider font-bold`}>{ref}</code>
                 <button
                   onClick={handleCopy}
@@ -215,7 +215,7 @@ function SuccessContent(props: SuccessFlowProps) {
                     <div className="flex flex-col items-center">
                       <div
                         className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${
-                          step.active ? t.trackingActiveIcon : "bg-muted-light/10 text-muted-light/20"
+                          step.active ? t.trackingActiveIcon : "bg-muted-light/10 text-muted-light"
                         }`}
                       >
                         {stepIcons[step.icon]}
@@ -225,10 +225,10 @@ function SuccessContent(props: SuccessFlowProps) {
                       )}
                     </div>
                     <div className="pb-4 min-w-0">
-                      <p className={`text-[12px] ${step.active ? "text-foreground/70" : "text-muted-light/30"}`}>
+                      <p className={`text-[12px] ${step.active ? "text-foreground/70" : "text-muted-light"}`}>
                         {step.text}
                       </p>
-                      <p className="text-[10px] text-muted-light/40 mt-0.5">{resolveTime(step.time)}</p>
+                      <p className="text-[10px] text-muted-light mt-0.5">{resolveTime(step.time)}</p>
                     </div>
                   </div>
                 ))}
@@ -258,7 +258,7 @@ function SuccessContent(props: SuccessFlowProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5 }}
-            className="text-center text-[11px] text-muted-light/40 mt-5 italic"
+            className="text-center text-[11px] text-muted-light mt-5 italic"
           >
             {footerNote}
           </motion.p>

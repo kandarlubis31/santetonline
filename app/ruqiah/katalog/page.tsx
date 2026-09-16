@@ -58,15 +58,15 @@ export default function RuqyahKatalogPage() {
                 </div>
               </div>
 
-              <p className="text-[13px] text-muted/70 mb-4 leading-relaxed">{paket.deskripsi}</p>
+              <p className="text-[13px] text-muted mb-4 leading-relaxed">{paket.deskripsi}</p>
 
               <div className="mb-4">
-                <p className="text-[10px] text-green/50 dark:text-green/50 font-semibold mb-2 uppercase tracking-wider">
+                <p className="text-[10px] text-green/80 dark:text-green/90 font-semibold mb-2 uppercase tracking-wider">
                   Efek yang Dirasakan
                 </p>
                 <ul className="space-y-1.5">
                   {paket.efek.map((efek, i) => (
-                    <li key={i} className="text-[13px] text-muted/70 flex items-start gap-2">
+                    <li key={i} className="text-[13px] text-muted flex items-start gap-2">
                       <Check className="w-3 h-3 text-green/60 dark:text-green/70 mt-0.5 shrink-0" />
                       {efek}
                     </li>
@@ -89,7 +89,7 @@ export default function RuqyahKatalogPage() {
               <div className="flex items-center justify-between pt-4 border-t border-border">
                 <div>
                   <span className="text-xl font-bold text-green">{paket.hargaLabel}</span>
-                  <span className="text-[11px] text-muted-light/50 ml-1">/ paket</span>
+                  <span className="text-[11px] text-muted-light ml-1">/ paket</span>
                 </div>
                 <Link
                   href={`/ruqiah/bayar/${paket.id}`}
@@ -112,13 +112,13 @@ export default function RuqyahKatalogPage() {
         >
           <div className="bg-green/5 dark:bg-[#111811]/60 border border-green/10 dark:border-green/15 rounded-2xl p-5">
             <div className="flex items-start gap-3">
-              <Shield className="w-4 h-4 text-green/50 mt-0.5 shrink-0" />
+              <Shield className="w-4 h-4 text-green/70 mt-0.5 shrink-0" />
               <div>
                 <p className="text-[13px] text-muted mb-1">
                   <strong className="text-foreground/70">Tips:</strong> Untuk pengalaman terbaik, kami rekomendasikan
                   paket &quot;Ruqyah Express&quot; karena efeknya paling terasa.
                 </p>
-                <p className="text-[11px] text-muted-light/60 italic">
+                <p className="text-[11px] text-muted-light italic">
                   Harga belum termasuk sedekah gaib (PPN 11%)
                 </p>
               </div>

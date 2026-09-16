@@ -167,7 +167,7 @@ export default function RuqiahPage() {
           >
             <h2 className="font-['Cinzel'] text-3xl md:text-4xl font-bold mb-8">
               <span className="text-secondary">SantetOnline</span>
-              <span className="text-muted/20 mx-4 text-2xl">vs</span>
+              <span className="text-muted/70 mx-4 text-2xl">vs</span>
               <span className="text-green">RuqyahOnline</span>
             </h2>
 
@@ -177,19 +177,19 @@ export default function RuqiahPage() {
                 <h3 className="font-['Cinzel'] text-base font-bold text-secondary mb-3">SantetOnline</h3>
                 <ul className="space-y-2.5 text-[13px] text-muted">
                   <li className="flex items-start gap-2">
-                    <span className="text-secondary/40 mt-0.5">-</span>
+                    <span className="text-secondary/70 mt-0.5">-</span>
                     Mengirim santet ke target
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-secondary/40 mt-0.5">-</span>
+                    <span className="text-secondary/70 mt-0.5">-</span>
                     Efek: kesurupan WC, ngomong sendiri
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-secondary/40 mt-0.5">-</span>
+                    <span className="text-secondary/70 mt-0.5">-</span>
                     Harga: Rp 15.000 - 199.000
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-secondary/40 mt-0.5">-</span>
+                    <span className="text-secondary/70 mt-0.5">-</span>
                     Garansi: uang kembali 200%
                   </li>
                 </ul>
@@ -200,26 +200,26 @@ export default function RuqiahPage() {
                 <h3 className="font-['Cinzel'] text-base font-bold text-green mb-3">RuqyahOnline</h3>
                 <ul className="space-y-2.5 text-[13px] text-muted">
                   <li className="flex items-start gap-2">
-                    <span className="text-green/40 mt-0.5">-</span>
+                    <span className="text-green/70 mt-0.5">-</span>
                     Menyembuhkan dari santet
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green/40 mt-0.5">-</span>
+                    <span className="text-green/70 mt-0.5">-</span>
                     Efek: rajin sholat, hafal Al-Qur&apos;an
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green/40 mt-0.5">-</span>
+                    <span className="text-green/70 mt-0.5">-</span>
                     Harga: Rp 10.000 - 99.000
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green/40 mt-0.5">-</span>
+                    <span className="text-green/70 mt-0.5">-</span>
                     Garansi: doa kembali 200%
                   </li>
                 </ul>
               </div>
             </div>
 
-            <p className="text-[12px] text-muted-light/40 mt-5 italic">
+            <p className="text-[12px] text-muted-light mt-5 italic">
               Keduanya sama-sama ampuh. Tapi kalau mau pilih yang mana, terserah Anda.
             </p>
           </motion.div>
@@ -330,7 +330,7 @@ export default function RuqiahPage() {
                     <p className="text-sm font-semibold text-foreground/80">{t.name}</p>
                     <div className="flex gap-0.5 mt-0.5">
                       {Array.from({ length: 5 }).map((_, j) => (
-                        <Star key={j} className={`w-3 h-3 ${j < t.rating ? "text-green fill-green" : "text-muted-light/20"}`} />
+                        <Star key={j} className={`w-3 h-3 ${j < t.rating ? "text-green fill-green" : "text-muted-light/70"}`} />
                       ))}
                     </div>
                   </div>

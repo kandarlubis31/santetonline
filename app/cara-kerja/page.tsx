@@ -83,7 +83,7 @@ export default function CaraKerjaPage() {
                 {/* Step content */}
                 <div className="card-base p-5 group-hover:border-accent/15 dark:group-hover:border-accent/20 transition-all duration-300">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className="text-[10px] text-accent/35 dark:text-accent/40 font-mono uppercase tracking-widest">
+                    <span className="text-[10px] text-accent dark:text-accent/40 font-mono uppercase tracking-widest">
                       Step {step.step}
                     </span>
                     {i === 0 && (
@@ -104,7 +104,7 @@ export default function CaraKerjaPage() {
                     {step.description}
                   </p>
                   <div className="bg-secondary/5 dark:bg-secondary/[0.06] border border-secondary/10 dark:border-secondary/15 rounded-lg px-3.5 py-2">
-                    <p className="text-[11px] text-muted/70 italic">{step.tip}</p>
+                    <p className="text-[11px] text-muted italic">{step.tip}</p>
                   </div>
                 </div>
               </motion.div>

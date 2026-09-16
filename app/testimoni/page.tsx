@@ -153,7 +153,7 @@ export default function TestimoniPage() {
                           className={`w-2.5 h-2.5 ${
                             j < t.rating
                               ? "text-accent fill-accent"
-                              : "text-muted-light/30"
+                              : "text-muted-light"
                           }`}
                         />
                       ))}
@@ -169,10 +169,10 @@ export default function TestimoniPage() {
 
               {/* Meta */}
               <div className="flex items-center justify-between pt-3 border-t border-border">
-                <span className="px-2 py-0.5 bg-accent/5 dark:bg-accent/8 rounded-full text-[10px] text-accent/50 dark:text-accent/60 font-medium">
+                <span className="px-2 py-0.5 bg-accent/10 dark:bg-accent/8 rounded-full text-[10px] text-accent dark:text-accent/80 font-medium">
                   {t.paket}
                 </span>
-                <span className="text-[10px] text-muted-light/40 flex items-center gap-1">
+                <span className="text-[10px] text-muted-light flex items-center gap-1">
                   <Calendar className="w-3 h-3" />
                   {t.date}
                 </span>
@@ -188,7 +188,7 @@ export default function TestimoniPage() {
           transition={{ delay: 0.8 }}
           className="text-center mt-12"
         >
-          <p className="text-[13px] text-muted-light/50 italic">
+          <p className="text-[13px] text-muted-light italic">
             Testimoni dikumpulkan langsung dari pelanggan melalui telepati resmi kami.
           </p>
         </motion.div>
