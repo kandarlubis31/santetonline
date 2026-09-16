@@ -303,7 +303,7 @@ export default function KonsultasiPage() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSend()}
                 placeholder="Ketik pertanyaan Anda..."
-                className="flex-1 bg-background/50 dark:bg-[#0a0a0f]/40 border border-border rounded-xl px-4 py-2.5 text-[13px] text-foreground/80 placeholder-muted-light/40 focus:outline-none focus:border-green/25 dark:focus:border-green/30 transition-colors"
+                className="flex-1 bg-background/50 dark:bg-[#0a0a0f]/40 border border-border rounded-xl px-4 py-2.5 text-base sm:text-[13px] text-foreground/80 placeholder-muted-light/40 focus:outline-none focus:border-green/25 dark:focus:border-green/30 transition-colors"
               />
               <button
                 onClick={() => handleSend()}

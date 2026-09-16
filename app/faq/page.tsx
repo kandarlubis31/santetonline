@@ -172,7 +172,7 @@ export default function FaqPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Cari pertanyaan..."
-              className="w-full bg-card dark:bg-surface border border-border rounded-xl pl-10 pr-4 py-2.5 text-[13px] text-foreground/80 placeholder-muted-light/40 focus:outline-none focus:border-accent/25 dark:focus:border-accent/30 transition-colors"
+              className="w-full bg-card dark:bg-surface border border-border rounded-xl pl-10 pr-4 py-2.5 text-base sm:text-[13px] text-foreground/80 placeholder-muted-light/40 focus:outline-none focus:border-accent/25 dark:focus:border-accent/30 transition-colors"
             />
           </div>
         </motion.div>
