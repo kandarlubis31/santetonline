@@ -38,7 +38,7 @@ export default function RuqyahKatalogPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               whileHover={{ y: -6, transition: { duration: 0.25 } }}
-              className="card-base p-6 group overflow-hidden hover:border-green/15 dark:hover:border-green/20"
+              className="relative card-base p-6 group overflow-hidden hover:border-green/15 dark:hover:border-green/20"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-green/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
 

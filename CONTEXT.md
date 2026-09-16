@@ -1,97 +1,115 @@
 # SantetOnline - Project Context
 
 ## Overview
-Website humor/satir "e-commerce santet" — konsep: belanja online pakai QRIS dummy, bayar pakai QR, dapat resi lucu. Deploy di Vercel.
+Website satir "e-commerce santet" — in-world sepenuhnya: QRIS palsu, resi gaib, konsultasi ustadz virtual (AI). Tanpa transaksi nyata. Deploy di Vercel.
 
 ## Tech Stack
 - **Next.js 16** (App Router, TypeScript)
-- **Tailwind CSS 4** (CSS variables untuk theming)
+- **Tailwind CSS 4** (CSS variables, `@custom-variant dark` bound ke class `.dark`)
 - **Framer Motion** (animasi, page transitions)
 - **Lucide React** (icons)
-- **qrcode** (QRIS dummy generation)
+- **qrcode** (QRIS generation)
 - **pnpm** (package manager)
 
 ## Project Structure
 ```
 app/
-├ page.tsx                    # Landing page
-├ layout.tsx                  # Root layout (ThemeProvider > SplashProvider > Navbar > children > Footer)
-├ globals.css                 # CSS variables, utility classes (.card-base, .btn-primary, .section-padding)
+├ layout.tsx                  # Root layout + themeInitScript inline (anti flash tema)
+├ page.tsx                    # Landing page (HeroSection + sections)
+├ not-found.tsx               # 404 bertema (skull + CTA)
+├ globals.css                 # CSS variables (:root + .dark), @custom-variant dark, utilities
 ├ katalog/page.tsx            # Katalog paket santet (4 paket)
-├ bayar/[paketId]/page.tsx    # QRIS payment + name form
-├ success/page.tsx            # Receipt + tracking
-├ cara-kerja/page.tsx         # 5 steps timeline
-├ testimoni/page.tsx          # 9 testimonials
-├ faq/page.tsx                # 12 FAQ items
-├ tentang/page.tsx            # Sejarah santet
-├ disclaimer/page.tsx         # Disclaimer
-└ ruqiah/                     # RuqyahOnline section (hijau theme)
+├ bayar/[paketId]/page.tsx    # Wrapper tipis → components/flow/BayarFlow
+├ success/page.tsx            # Wrapper tipis → components/flow/SuccessFlow
+├ api/konsultasi/route.ts     # POST proxy Groq (server-side, key aman)
+├ cara-kerja|testimoni|faq|tentang|disclaimer/page.tsx
+└ ruqiah/                     # RuqyahOnline section (tema hijau)
     ├── page.tsx              # Landing + VS section
-    ├── katalog/page.tsx      # 4 paket ruqyah
-    ├── bayar/[paketId]/page.tsx
-    ├── success/page.tsx
-    └── konsultasi/page.tsx   # Chat ustadz virtual (auto-reply)
+    ├── katalog/page.tsx
+    ├── bayar/[paketId]/page.tsx   # → BayarFlow variant="ruqiah"
+    ├── success/page.tsx           # → SuccessFlow variant="ruqiah"
+    └── konsultasi/page.tsx   # Chat ustadz virtual (AI + fallback lokal)
 
 components/
-├ Navbar.tsx                  # Glassmorphism on scroll, mobile menu, dark/light toggle
+├ SplashProvider.tsx          # Orkestrator intro: AnimatePresence + context useIntroReady
+├ SplashScreen.tsx            # Cinematic 3.8s → onExitStart (crossfade), tombol "Lewati"
+├ ThemeProvider.tsx           # Single source of truth tema (localStorage → prefers-color-scheme → dark)
+├ PageTransition.tsx          # Enter animation per-pathname (gated ke introReady)
+├ HeroSection.tsx             # Hero variants+stagger (gated ke introReady)
+├ Navbar.tsx                  # Glassmorphism on scroll, mobile menu (Escape+scroll-lock), lg breakpoint
 ├ Footer.tsx                  # 4-column layout
-├ HeroSection.tsx             # Animated hero (SantetOnline)
-├ PaketCard.tsx               # Package card with hover effects
-├ SplashScreen.tsx            # Cinematic splash (~4.5s, 1x per session)
-├ SplashProvider.tsx          # Client wrapper + sessionStorage check
-├ ThemeProvider.tsx            # React context + localStorage persistence
-├ PageTransition.tsx          # Framer Motion AnimatePresence route transitions
-├ QRISCode.tsx                # QR code generator
-├ CountdownTimer.tsx          # 15-minute countdown
-├ DisclaimerBanner.tsx        # Warning banner
-├ FaqAccordion.tsx            # Animated accordion
-├ TestimonialCard.tsx         # Testimonial card
-├ GlitchText.tsx              # Glitch effect text
-└ SmokeEffect.tsx             # Ambient smoke particles
+├ PaketCard.tsx               # Kartu paket santet
+├ QRISCode.tsx                # QR canvas, regenerate saat toggle tema
+├ CountdownTimer.tsx          # 15 menit, onExpire → redirect katalog
+├ DisclaimerBanner.tsx        # Banner "Catatan Layanan"
+├ SmokeEffect.tsx             # Ambient smoke (dipakai HeroSection)
+└ flow/                       # Flow bayar/success BERSAMA (santet vs ruqiah via variant)
+    ├── flowTheme.ts          # Semua perbedaan class antar-varian di 1 tempat
+    ├── BayarFlow.tsx         # Steps, ringkasan, QR, countdown, form nama
+    ├── SuccessFlow.tsx       # Confetti, resi, tracking (dengan Suspense)
+    └── PaketNotFound.tsx     # 404 paket bertema
 
 lib/
-├ paketData.ts                # 4 paket santet (ringan, sedang, berat, premium)
+├ paketData.ts                # 4 paket santet
 ├ ruqyahData.ts               # 4 paket ruqyah
-└ qris.ts                     # QRIS URL generator, dummy ref, formatCurrency
+└ qris.ts                     # generateQrisUrl(ref), generateDummyRef, formatCurrency
 ```
+
+## Intro Flow (arsitektur sekarang)
+```
+layout.tsx
+└── ThemeProvider
+    └── SplashProvider                     ← orkestrator + context
+        ├── <AnimatePresence>
+        │   └── SplashScreen (phase 0-4, 3.8s)
+        │       └── onExitStart() @3.8s    ← BUKAN setelah fade selesai
+        │           ├── setShowSplash(false)   → exit-fade 0.8s (crossfade)
+        │           └── setIntroReady(true)    → konten reveal + animasi main
+        └── children (aria-hidden + pointer-events-none selama intro)
+```
+- **Skip splash**: repeat visit (sessionStorage `santetonline_splash_seen`), `prefers-reduced-motion`, atau tombol "Lewati" → semua lewat jalur `onExitStart` yang sama
+- **Gating**: `useIntroReady()` (context) — HeroSection & PageTransition baru mainkan entrance setelah intro selesai (dulu animasi jalan tersembunyi di balik splash)
+- **FOUC**: pre-hydration konten disembunyikan sejak HTML (bukan tampil lalu ditutup splash)
 
 ## Theming
-- **Dark mode (default)**: Background #0a0a0f, accent gold #d4af37, secondary red #8b0000
-- **Light mode**: Background #f5f2eb, accent #b8860b, secondary #dc2626
-- CSS variables di `globals.css` (`:root` + `.dark`)
-- Toggle via Sun/Moon icon di Navbar, persist di localStorage (`santetonline_theme`)
-- Classes: `.card-base`, `.btn-primary`, `.section-padding`, `.glass`, `.glow-red/gold/green`
+- **Dark (default)**: bg #0a0a0f, accent #d4af37, secondary #8b0000
+- **Light**: bg #f5f2eb, accent #b8860b, secondary #dc2626
+- `themeInitScript` di layout set class `.dark` sebelum first paint; urutan resolve: localStorage `santetonline_theme` → `prefers-color-scheme` → dark
+- **KRITIS**: `@custom-variant dark (&:where(.dark, .dark *));` di globals.css — tanpa ini variant `dark:` Tailwind v4 ngikutin OS, bukan class → overlay near-black bocor ke light mode
 
-## Key Features
-1. **Splash Screen**: Cinematic animation, phases (glow → icon → text → tagline → exit), sessionStorage key `santetonline_splash_seen`
-2. **Page Transitions**: Framer Motion AnimatePresence + usePathname, blur + fade + slide
-3. **QRIS Payment Flow**: Katalog → Bayar (QR + countdown) → Name Form → Success (receipt + tracking)
-4. **RuqyahOnline**: Separate section with green theme, VS comparison, virtual ustadz chat
+## API Konsultasi (/api/konsultasi)
+- Proxy POST ke Groq (`openai/gpt-oss-20b`), key HANYA server-side
+- Persona "Ustadz Virtual" in-character, **tahan prompt-injection** (pesan user = cerita pelanggan, bukan instruksi; injection dijawab in-character)
+- **Hemat token**: `reasoning_effort: "low"`, `reasoning_format: "hidden"`, `max_completion_tokens: 600`, riwayat 8 pesan terakhir, trim 300 char/pesan
+- `sanitizeReply()`: strip markdown (`**`, `*`, `_`, backtick, heading, bullet) + blok `<think>` — bubble chat render plain text
+- **Rate limit per IP** (in-memory): 10 req/menit + 60 req/jam, jalan SEBELUM fetch Groq (request diblokir = 0 token); respons 429 tetap in-character + header `Retry-After`
+- Fallback lokal (keyword match) kalau API gagal/timeout/rate-limited — chat tidak pernah mati
 
-## Payment Flow (Dummy)
+## Env
+| Var | Isi | Catatan |
+|-----|-----|---------|
+| `GROQ_API_KEY` | key Groq (`gsk_...`) | Vercel Production Secret + `.env.local` |
+| `GROQ_MODEL` | `openai/gpt-oss-20b` | default kalau kosong |
+
+`.env.local` di-gitignore; `.env.example` ke-commit sebagai dokumentasi.
+
+## Payment Flow (Dummy, 100% tanpa transaksi nyata)
 ```
-/bayar/[paketId] → QRIS code + countdown → "Simulasi Bayar" → loading 3s → Name Form → /success?paket=X&ref=Y&amount=Z&nama=N
+/katalog → /bayar/[paketId] (QR + countdown 15m) → "Bayar" (loading 3s)
+→ form nama → /success?paket=X&ref=Y&amount=Z&nama=N
 ```
-
-## Color Scheme
-| Token | Dark | Light |
-|-------|------|-------|
-| background | #0a0a0f | #f5f2eb |
-| accent | #d4af37 | #b8860b |
-| secondary | #8b0000 | #dc2626 |
-| green | #2d8b4e | #166534 |
-| card | #111118 | #ffffff |
-| muted | #a09a94 | #6b6570 |
+- QR berisi URL absolut ke halaman success **dengan resi yang sama** yang tampil di UI — scan QR pakai HP langsung kebuka halaman "Pembayaran Berhasil"
+- Countdown habis → tombol berubah jadi "Buat Pesanan Baru" → redirect katalog
+- Halaman bayar & success dibungkus Suspense (pakai `useSearchParams`)
 
 ## Conventions
-- All pages are `"use client"` (Framer Motion)
+- Semua halaman `"use client"` (Framer Motion); metadata hanya di root layout
 - Typography: Cinzel (headings), Inter (body)
-- Animations: whileInView for sections, spring for icons
-- No lorem ipsum — all content is real Indonesian humor/satir
-- Mobile-first responsive design
-- CSS variables for theme colors, Tailwind dark: variants
+- **Mobile-first**: judul besar mulai `text-4xl` di <sm (Cinzel lebar), `min-h-svh` bukan `min-h-screen` (address bar mobile), input ≥16px di mobile (iOS auto-zoom), CTA full-width di mobile
+- Aksesibilitas: `:focus-visible` ring emas, `prefers-reduced-motion` mematikan animasi CSS, aria-expanded di accordion & hamburger, Escape tutup menu mobile
+- Class bersama: `.card-base`, `.btn-primary`, `.section-padding` (dibungkus `@layer components`)
 
 ## Deployment
-- Vercel (auto-deploy from GitHub)
-- No env variables needed (all dummy/simulated)
-- Build: `pnpm build` → 15 pages, 0 errors
+- Vercel (auto-deploy from GitHub, project `santetonline`)
+- Build: `pnpm build` → 16 routes (15 halaman + 1 API), lint 0/0
+- Catatan Windows: `pnpm lint` & `pnpm build` kadang crash native (OOM) kalau jalan barengan — jalankan terpisah
