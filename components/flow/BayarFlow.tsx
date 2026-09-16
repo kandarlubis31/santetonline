@@ -263,13 +263,13 @@ export default function BayarFlow({
                     ) : (
                       <>
                         <CheckCircle className="w-5 h-5" />
-                        <span>Simulasi Bayar (Dummy)</span>
+                        <span>Bayar Sekarang</span>
                       </>
                     )}
                   </button>
 
                   <p className="text-[11px] text-muted-light/50 mt-3 text-center italic">
-                    Tombol ini hanya untuk simulasi. Tidak ada pembayaran nyata.
+                    Pembayaran diverifikasi otomatis oleh jaringan gaib kami.
                   </p>
                 </div>
               </div>

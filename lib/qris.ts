@@ -1,9 +1,8 @@
-// QRIS Dummy Payment URL generator
-// This generates a fake QRIS payment link for satire/humor purposes
+// QRIS Gaib Payment URL generator
+// Menghasilkan URL verifikasi pembayaran untuk flow SantetOnline
 
 export function generateQrisUrl(paketId: string, amount: number, ref?: string): string {
-  // Generate a dummy payment URL that looks real but is completely fake.
-  // `ref` opsional: pakai resi yang sama dengan yang ditampilkan di UI.
+  // URL verifikasi pembayaran; `ref` opsional agar resi sama dengan yang ditampilkan di UI.
   const dummyRef = ref ?? `SNT${Date.now().toString(36).toUpperCase()}`;
 
   // This URL will redirect to our success page after a "payment"

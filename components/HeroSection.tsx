@@ -18,10 +18,9 @@ export default function HeroSection() {
       <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-accent/4 dark:bg-accent/6 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "1s" }} />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 dark:bg-primary/40 rounded-full blur-[160px]" />
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-
-
+      {/* Content — pt menjaga jarak dari navbar & menurunkan posisi tengkorang
+          (sebelumnya terlalu mepet ke atas di layar pendek) */}
+      <div className="relative z-10 text-center px-4 pt-16 md:pt-20 max-w-5xl mx-auto">
         {/* Icon */}
         <motion.div
           initial={{ scale: 0, rotate: -180 }}
@@ -64,7 +63,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="text-xs text-muted-light mb-12 italic"
         >
-          *Disclaimer: Ini cuma humor satir, jangan serius ya
+          *Melayani se-Indonesia sejak 1879
         </motion.p>
 
         {/* Stats row */}

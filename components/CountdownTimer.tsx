@@ -39,17 +39,17 @@ export default function CountdownTimer({ initialMinutes = 15, onExpire }: Countd
       <p
         className={`text-xs mb-2 uppercase tracking-wider font-medium ${
           expired
-            ? "text-[#8b0000] font-bold"
+            ? "text-secondary font-bold"
             : isUrgent
-              ? "text-[#8b0000]/80"
-              : "text-[#e8e0d0]/40"
+              ? "text-secondary/80"
+              : "text-muted-light"
         }`}
       >
         {expired ? "Waktu pembayaran habis" : isUrgent ? "Waktu hampir habis" : "Batas waktu pembayaran"}
       </p>
       <div
         className={`font-mono text-4xl font-bold tracking-wider ${
-          expired || isUrgent ? "text-[#8b0000]" : "text-[#d4af37]"
+          expired || isUrgent ? "text-secondary" : "text-accent"
         } ${expired ? "opacity-60" : ""}`}
       >
         {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}

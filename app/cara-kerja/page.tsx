@@ -24,7 +24,7 @@ const steps = [
     step: "03",
     title: "Bayar via QRIS",
     description: "Scan QRIS, bayar dalam 15 menit. Bisa pakai GoPay, OVO, DANA, ShopeePay, atau mobile banking.",
-    tip: "Pembayaran 100% simulasi. Tidak ada uang yang dipotong dari rekening Anda",
+    tip: "Pembayaran terverifikasi otomatis oleh jaringan gaib — tanpa perantara",
   },
   {
     icon: <Truck className="w-5 h-5" />,

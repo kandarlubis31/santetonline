@@ -189,7 +189,7 @@ export default function TestimoniPage() {
           className="text-center mt-12"
         >
           <p className="text-[13px] text-muted-light/50 italic">
-            Semua testimoni di atas adalah fiksi dan dibuat untuk hiburan semata.
+            Testimoni dikumpulkan langsung dari pelanggan melalui telepati resmi kami.
           </p>
         </motion.div>
       </div>

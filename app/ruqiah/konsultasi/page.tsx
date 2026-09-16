@@ -160,19 +160,41 @@ export default function KonsultasiPage() {
   }, [messages, isTyping]);
 
 
-  const handleSend = (text?: string) => {
+  const handleSend = async (text?: string) => {
     const msg = text || input.trim();
-    if (!msg) return;
+    if (!msg || isTyping) return;
 
-    setMessages((prev) => [...prev, { text: msg, isUser: true, time: formatTime() }]);
+    const userMsg = { text: msg, isUser: true, time: formatTime() };
+    const nextMessages = [...messages, userMsg];
+    setMessages(nextMessages);
     setInput("");
     setIsTyping(true);
 
-    setTimeout(() => {
-      const reply = getReply(msg);
-      setMessages((prev) => [...prev, { text: reply, isUser: false, time: formatTime() }]);
-      setIsTyping(false);
-    }, 1200 + Math.random() * 1200);
+    const appendReply = (reply: string) => {
+      // Delay kecil biar terasa natural (ustadz "mengetik")
+      setTimeout(() => {
+        setMessages((prev) => [...prev, { text: reply, isUser: false, time: formatTime() }]);
+        setIsTyping(false);
+      }, 400 + Math.random() * 600);
+    };
+
+    try {
+      const res = await fetch("/api/konsultasi", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: nextMessages.map((m) => ({
+            role: m.isUser ? ("user" as const) : ("assistant" as const),
+            content: m.text,
+          })),
+        }),
+      });
+      const data = await res.json();
+      appendReply(data?.reply || getReply(msg));
+    } catch {
+      // Network error / API down → fallback reply lokal, chat tetap jalan
+      appendReply(getReply(msg));
+    }
   };
 
   return (
@@ -292,7 +314,7 @@ export default function KonsultasiPage() {
               </button>
             </div>
             <p className="text-[10px] text-muted-light/30 mt-2 text-center italic">
-              Ustadz virtual ini adalah simulasi. Jawaban otomatis.
+              Respon ustadz dapat bervariasi. Untuk kondisi darurat, hubungi ustadz terdekat.
             </p>
           </div>
         </motion.div>

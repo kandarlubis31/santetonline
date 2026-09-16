@@ -23,7 +23,7 @@ export default function RuqiahSuccessPage() {
         { icon: "check", text: "Ruqyah selesai", time: "Estimasi 1-3 hari", active: false },
       ]}
       secondaryCta={{ href: "/ruqiah", label: "Ruqyah Online" }}
-      footerNote="Semua transaksi adalah simulasi/dummy. Ini cuma humor."
+      footerNote="Resi ini sah menurut hukum alam gaib. Semoga lekas sembuh."
     />
   );
 }

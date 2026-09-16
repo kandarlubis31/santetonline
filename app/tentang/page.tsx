@@ -32,7 +32,7 @@ export default function TentangPage() {
             Disclaimer Penting
           </h3>
           <p className="text-[13px] text-muted leading-relaxed">
-            Website ini adalah <strong>project kreatif dan humor</strong> yang dibuat untuk tujuan edukasi dan hiburan. <strong>Tidak ada bagian dari website ini yang mempromosikan</strong> atau mendukung praktik ilmu hitam. Semua konten bersifat fiksi dan satir.
+            Website ini adalah <strong>layanan santet online berlisensi gaib</strong> — pelopor di Indonesia sejak 1879. <strong>Kami tidak mendukung</strong> penyalahgunaan ilmu hitam di dunia nyata; semua ritual dilakukan murni di alam gaib oleh dukun bersertifikat.
           </p>
         </motion.div>
 
@@ -145,7 +145,7 @@ export default function TentangPage() {
                 Film <strong className="text-foreground/70">&quot;Paket Santet&quot;</strong> yang tayang pada Agustus 2026 juga mengangkat fenomena kurir dan belanja online yang berubah menjadi horor mencekam. Kombinasi antara budaya mistis dan gaya hidup digital ini menciptakan tren baru.
               </p>
               <p>
-                Website <strong className="text-accent/80 dark:text-accent/90">SantetOnline</strong> hadir sebagai respons kreatif terhadap fenomena ini. Kami mengambil inspirasi dari tren tersebut dan mengubahnya menjadi website humor yang edukatif sekaligus menghibur.
+                Website <strong className="text-accent/80 dark:text-accent/90">SantetOnline</strong> hadir sebagai pionir digitalisasi layanan gaib. Kami memodernisasi tradisi menjadi platform yang cepat, aman, dan terjangkau — tanpa perantara, tanpa drama.
               </p>
             </div>
           </motion.div>
@@ -173,7 +173,7 @@ export default function TentangPage() {
                 Website ini dibuat oleh developer yang terinspirasi dari fenomena &quot;santet online&quot;. Dibuat dengan <strong className="text-foreground/70">Next.js</strong>, <strong className="text-foreground/70">Tailwind CSS</strong>, dan <strong className="text-foreground/70">Framer Motion</strong>.
               </p>
               <p>
-                Deploy di <strong className="text-foreground/70">Vercel</strong> dan penuh dengan humor satir. Semua konten dibuat untuk hiburan semata. Semoga website ini bisa membuat Anda tersenyum (atau ketawa).
+                Beroperasi di atas infrastruktur <strong className="text-foreground/70">Vercel</strong> dengan jaringan dukun bersertifikat SGA (Santet Gaib Authority). Melayani se-Indonesia, dan beberapa negara tetangga.
               </p>
             </div>
           </motion.div>

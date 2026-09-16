@@ -217,7 +217,7 @@ export default function SplashScreen({
                 className="text-[10px] mt-3 italic"
                 style={{ color: "var(--splash-text-ghost)" }}
               >
-                *humor satir, jangan serius
+                *Sertifikat Gaib No. 001/JIN/1879
               </motion.p>
             </motion.div>
           </div>
