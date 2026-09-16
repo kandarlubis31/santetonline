@@ -18,33 +18,44 @@ export function useTheme() {
   return useContext(ThemeContext);
 }
 
+/**
+ * Satu-satunya pemilik state tema (sebelumnya SplashProvider juga menulis
+ * class `dark` dengan default berbeda -> flash light<->dark saat load).
+ * Urutan resolusi: localStorage (divalidasi) -> prefers-color-scheme -> dark.
+ */
+function resolveTheme(): Theme {
+  try {
+    const saved = localStorage.getItem("santetonline_theme");
+    if (saved === "dark" || saved === "light") return saved;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  } catch {
+    return "dark";
+  }
+}
+
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    const saved = localStorage.getItem("santetonline_theme") as Theme | null;
-    if (saved) {
-      setTheme(saved);
-      document.documentElement.classList.toggle("dark", saved === "dark");
-    } else {
-      document.documentElement.classList.add("dark");
-    }
+    // Class `dark` di <html> sudah di-set oleh inline script di layout
+    // sebelum first paint — di sini cukup sinkronkan state React.
+    // setState dibungkus rAF agar tidak jalan sinkron di body effect.
+    const raf = requestAnimationFrame(() => setTheme(resolveTheme()));
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   const toggleTheme = useCallback(() => {
     setTheme((prev) => {
       const next = prev === "dark" ? "light" : "dark";
-      localStorage.setItem("santetonline_theme", next);
+      try {
+        localStorage.setItem("santetonline_theme", next);
+      } catch {
+        // storage penuh/diblokir — tema tetap berubah untuk sesi ini
+      }
       document.documentElement.classList.toggle("dark", next === "dark");
       return next;
     });
   }, []);
-
-  if (!mounted) {
-    return <>{children}</>;
-  }
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

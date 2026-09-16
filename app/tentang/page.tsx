@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BookOpen, Globe, Users, Sparkles, Info, MapPin, Calendar } from "lucide-react";
+import { BookOpen, Globe, Users, Sparkles, MapPin, Calendar } from "lucide-react";
 
 export default function TentangPage() {
   return (

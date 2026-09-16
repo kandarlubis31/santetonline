@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import QRCode from "qrcode";
+import { useTheme } from "./ThemeProvider";
 
 interface QRISCodeProps {
   value: string;
@@ -11,10 +12,14 @@ interface QRISCodeProps {
 export default function QRISCode({ value, size = 200 }: QRISCodeProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [loaded, setLoaded] = useState(false);
+  // Fix: QR sebelumnya dirender sekali dengan warna tema saat itu —
+  // toggle tema tidak me-render ulang QR (warna basi/terbalik).
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (!canvasRef.current) return;
     const isDark = document.documentElement.classList.contains("dark");
+    setLoaded(false);
     QRCode.toCanvas(canvasRef.current, value, {
       width: size,
       margin: 2,
@@ -23,8 +28,13 @@ export default function QRISCode({ value, size = 200 }: QRISCodeProps) {
         light: isDark ? "#0a0a0f" : "#f5f2eb",
       },
       errorCorrectionLevel: "M",
-    }).then(() => setLoaded(true));
-  }, [value, size]);
+    })
+      .then(() => setLoaded(true))
+      .catch(() => {
+        // Gagal render (mis. value kosong) — jangan biarkan spinner selamanya
+        setLoaded(true);
+      });
+  }, [value, size, theme]);
 
   return (
     <div className="relative inline-block">

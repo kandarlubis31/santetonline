@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import DisclaimerBanner from "@/components/DisclaimerBanner";
 import { ruqyahList } from "@/lib/ruqyahData";
-import { Package, Shield, Star, Clock, Check, ArrowRight } from "lucide-react";
+import { Shield, Star, Clock, Check, ArrowRight } from "lucide-react";
 
 export default function RuqyahKatalogPage() {
   return (

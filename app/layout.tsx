@@ -17,6 +17,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Dijalankan sebelum first paint agar tidak ada flash tema salah.
+// Harus sinkron dengan resolveTheme() di ThemeProvider.
+const themeInitScript = `(function(){try{var t=localStorage.getItem("santetonline_theme");if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.classList.toggle("dark",t==="dark")}catch(e){}})()`;
+
 export const metadata: Metadata = {
   title: "SantetOnline - Santet Online? Siap Kirim ke Mana Aja!",
   description:
@@ -33,9 +37,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="id"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground theme-transition">
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <ThemeProvider>
           <SplashProvider>
             <Navbar />

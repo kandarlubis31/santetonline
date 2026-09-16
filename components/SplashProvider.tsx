@@ -1,36 +1,25 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useSyncExternalStore } from "react";
 import SplashScreen from "./SplashScreen";
 
 const SPLASH_KEY = "santetonline_splash_seen";
-const THEME_KEY = "santetonline_theme";
+
+// Snapshot konstan — cuma buat mendeteksi sisi server vs client
+const emptySubscribe = () => () => {};
 
 export default function SplashProvider({ children }: { children: React.ReactNode }) {
+  // false saat SSR & render client pertama, true setelahnya — tanpa setState di effect
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const [showSplash, setShowSplash] = useState(true);
-  const [mounted, setMounted] = useState(false);
-  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    setMounted(true);
-
-    // Detect theme from localStorage before splash renders
-    const saved = localStorage.getItem(THEME_KEY);
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const dark = saved ? saved === "dark" : prefersDark;
-    setIsDark(dark);
-
-    // Apply theme class immediately so CSS vars resolve correctly
-    if (dark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-
-    const seen = sessionStorage.getItem(SPLASH_KEY);
-    if (seen) {
-      setShowSplash(false);
-    }
+    const raf = requestAnimationFrame(() => {
+      if (sessionStorage.getItem(SPLASH_KEY)) {
+        setShowSplash(false);
+      }
+    });
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   const handleComplete = useCallback(() => {
@@ -49,8 +38,17 @@ export default function SplashProvider({ children }: { children: React.ReactNode
 
   return (
     <>
-      {showSplash && <SplashScreen onComplete={handleComplete} isDark={isDark} />}
-      <div className={showSplash ? "opacity-0" : "opacity-100 transition-opacity duration-500"}>
+      {showSplash && <SplashScreen onComplete={handleComplete} />}
+      {/* Saat splash tampil, konten di belakang harus non-interaktif
+          (sebelumnya hanya opacity-0 — link/tombol tetap bisa diklik tak terlihat) */}
+      <div
+        aria-hidden={showSplash}
+        className={
+          showSplash
+            ? "pointer-events-none select-none opacity-0"
+            : "opacity-100 transition-opacity duration-500"
+        }
+      >
         {children}
       </div>
     </>

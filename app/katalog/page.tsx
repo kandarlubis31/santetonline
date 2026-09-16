@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import PaketCard from "@/components/PaketCard";
 import DisclaimerBanner from "@/components/DisclaimerBanner";
 import { paketList } from "@/lib/paketData";
-import { Package, Shield } from "lucide-react";
+import { Shield } from "lucide-react";
 import Link from "next/link";
 
 export default function KatalogPage() {

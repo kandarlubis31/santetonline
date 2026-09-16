@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Search, Package, CreditCard, Truck, CheckCircle, ArrowRight, Zap } from "lucide-react";
+import { Search, Package, CreditCard, Truck, CheckCircle, ArrowRight } from "lucide-react";
 
 const steps = [
   {

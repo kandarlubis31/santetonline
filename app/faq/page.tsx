@@ -84,6 +84,8 @@ function FaqItem({ item, index }: { item: typeof faqItems[0]; index: number }) {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-start gap-3 p-4 text-left group"
+        aria-expanded={isOpen}
+        aria-controls={`faq-panel-${index}`}
       >
         <div className="w-6 h-6 rounded-lg bg-accent/8 dark:bg-accent/10 flex items-center justify-center shrink-0 mt-0.5">
           <HelpCircle className="w-3.5 h-3.5 text-accent/60 dark:text-accent/70" />
@@ -103,6 +105,7 @@ function FaqItem({ item, index }: { item: typeof faqItems[0]; index: number }) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id={`faq-panel-${index}`}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}

@@ -208,22 +208,26 @@ body {
   box-shadow: 0 0 30px rgba(45,139,78,0.15), 0 0 60px rgba(45,139,78,0.05);
 }
 
-/* Card effects */
-.card-base {
-  background: var(--card);
-  border: 1px solid var(--card-border);
-  border-radius: 1rem;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
+/* Card effects — dibungkus @layer agar utility Tailwind (mis. hover:transform-none)
+   bisa mengalahkan rule ini (sebelumnya specificity-nya menang, hover lift
+   tetap jalan di halaman yang tidak menginginkannya) */
+@layer components {
+  .card-base {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 1rem;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
-.card-base:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-}
+  .card-base:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  }
 
-.dark .card-base:hover {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(212, 175, 55, 0.05);
+  .dark .card-base:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(212, 175, 55, 0.05);
+  }
 }
 
 /* Button effects */
@@ -434,9 +438,20 @@ body {
   transform: translateY(-4px);
 }
 
-/* Better focus states */
+/* Better focus states — outline none TANPA pengganti membuat navigasi
+   keyboard tidak terlihat; sekarang ada focus ring halus */
 input:focus, textarea:focus {
   outline: none;
+}
+
+input:focus-visible, textarea:focus-visible {
+  outline: 2px solid rgba(212, 175, 55, 0.4);
+  outline-offset: 1px;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(212, 175, 55, 0.5);
+  outline-offset: 2px;
 }
 
 /* Smooth underline animation */
@@ -488,4 +503,17 @@ input:focus, textarea:focus {
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Aksesibilitas: hormati preferensi reduced motion
+   (matikan animasi CSS dekoratif — float, smoke, pulse, dll) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

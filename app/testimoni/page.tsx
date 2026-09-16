@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import DisclaimerBanner from "@/components/DisclaimerBanner";
-import { Star, MessageCircle, CheckCircle, Calendar } from "lucide-react";
+import { Star, CheckCircle, Calendar } from "lucide-react";
 
 const testimonials = [
   {

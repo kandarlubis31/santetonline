@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
-import { Send, MessageCircle, User, ArrowRight } from "lucide-react";
+import { Send, User, ArrowRight } from "lucide-react";
 import DisclaimerBanner from "@/components/DisclaimerBanner";
 
 /* ── smarter auto-replies with keyword matching ── */
@@ -128,9 +128,23 @@ export default function KonsultasiPage() {
     {
       text: "Assalamualaikum! Selamat datang di Konsultasi Ustadz Online. Ada yang bisa saya bantu hari ini?",
       isUser: false,
-      time: formatTime(),
+      // Jam diisi setelah mount — formatTime() di initializer menyebabkan
+      // hydration mismatch (jam server vs jam device user).
+      time: "",
     },
   ]);
+
+  useEffect(() => {
+    // rAF: setState tidak jalan sinkron di body effect
+    const raf = requestAnimationFrame(() => {
+      setMessages((prev) =>
+        prev[0] && prev[0].time === ""
+          ? [{ ...prev[0], time: formatTime() }, ...prev.slice(1)]
+          : prev
+      );
+    });
+    return () => cancelAnimationFrame(raf);
+  }, []);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -144,6 +158,7 @@ export default function KonsultasiPage() {
   useEffect(() => {
     scrollToBottom();
   }, [messages, isTyping]);
+
 
   const handleSend = (text?: string) => {
     const msg = text || input.trim();

@@ -6,12 +6,13 @@ import { Skull } from "lucide-react";
 
 export default function SplashScreen({
   onComplete,
-  isDark = true,
 }: {
   onComplete: () => void;
-  isDark?: boolean;
 }) {
   const [phase, setPhase] = useState(0);
+  const [particles, setParticles] = useState<
+    { id: number; x: number; y: number; size: number; delay: number; duration: number; drift: number }[]
+  >([]);
 
   useEffect(() => {
     const timers = [
@@ -25,14 +26,23 @@ export default function SplashScreen({
     return () => timers.forEach(clearTimeout);
   }, [onComplete]);
 
-  const particles = Array.from({ length: 30 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: 1 + Math.random() * 2,
-    delay: Math.random() * 3,
-    duration: 3 + Math.random() * 4,
-  }));
+  useEffect(() => {
+    // Generate di dalam rAF: Math.random() dipanggil di callback, bukan saat render
+    const raf = requestAnimationFrame(() => {
+      setParticles(
+        Array.from({ length: 30 }, (_, i) => ({
+          id: i,
+          x: Math.random() * 100,
+          y: Math.random() * 100,
+          size: 1 + Math.random() * 2,
+          delay: Math.random() * 3,
+          duration: 3 + Math.random() * 4,
+          drift: 40 + Math.random() * 60,
+        }))
+      );
+    });
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   return (
     <AnimatePresence>
@@ -54,7 +64,7 @@ export default function SplashScreen({
               initial={{ opacity: 0 }}
               animate={{
                 opacity: [0, 0.4, 0],
-                y: [0, -40 - Math.random() * 60],
+                y: [0, -p.drift],
               }}
               transition={{
                 duration: p.duration,

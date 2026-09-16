@@ -14,14 +14,19 @@ export default function SmokeEffect() {
   const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
-    const newParticles: Particle[] = Array.from({ length: 10 }, (_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      delay: Math.random() * 6,
-      duration: 5 + Math.random() * 5,
-      size: 30 + Math.random() * 60,
-    }));
-    setParticles(newParticles);
+    // Generate di dalam rAF: Math.random() dipanggil di callback, bukan saat render
+    const raf = requestAnimationFrame(() => {
+      setParticles(
+        Array.from({ length: 10 }, (_, i) => ({
+          id: i,
+          left: Math.random() * 100,
+          delay: Math.random() * 6,
+          duration: 5 + Math.random() * 5,
+          size: 30 + Math.random() * 60,
+        }))
+      );
+    });
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   return (

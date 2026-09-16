@@ -26,6 +26,21 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Mobile menu: Escape untuk tutup + lock scroll body saat terbuka
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [isOpen]);
+
   return (
     <>
       <nav
@@ -49,7 +64,8 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop nav */}
-            <div className="hidden md:flex items-center gap-0.5">
+            {/* lg: desktop nav mulai 1024px — di 768–950px 6 link + CTA terlalu sesak */}
+            <div className="hidden lg:flex items-center gap-0.5">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -92,7 +108,7 @@ export default function Navbar() {
             </div>
 
             {/* Mobile right side */}
-            <div className="flex md:hidden items-center gap-2">
+            <div className="flex lg:hidden items-center gap-2">
               <button
                 onClick={toggleTheme}
                 className="p-2 text-muted hover:text-accent rounded-lg hover:bg-accent/5 transition-all duration-200"
@@ -107,6 +123,8 @@ export default function Navbar() {
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="p-2 text-accent hover:bg-accent/10 rounded-lg transition-colors"
+                aria-label={isOpen ? "Tutup menu" : "Buka menu"}
+                aria-expanded={isOpen}
               >
                 {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -124,7 +142,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40 bg-foreground/10 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-40 bg-foreground/10 backdrop-blur-sm lg:hidden"
               onClick={() => setIsOpen(false)}
             />
             <motion.div
@@ -132,7 +150,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.98 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="fixed top-16 left-3 right-3 z-50 md:hidden bg-card border border-border rounded-2xl shadow-lg overflow-hidden"
+              className="fixed top-16 left-3 right-3 z-50 lg:hidden bg-card border border-border rounded-2xl shadow-lg overflow-hidden"
             >
               <div className="p-3 space-y-1">
                 {navLinks.map((link, i) => (

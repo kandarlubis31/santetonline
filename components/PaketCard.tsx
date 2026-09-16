@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { PaketSantet } from "@/lib/paketData";
-import { Star, Clock, Zap, ArrowRight, Check } from "lucide-react";
+import { Star, Clock, ArrowRight, Check } from "lucide-react";
 
 interface PaketCardProps {
   paket: PaketSantet;
