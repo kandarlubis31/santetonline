@@ -151,8 +151,9 @@ export default function RuqiahPage() {
         </div>
       </section>
 
-      {/* Disclaimer */}
-      <div className="max-w-3xl mx-auto px-4 -mt-8 relative z-10 mb-20">
+      {/* Disclaimer — pull-up -mt-8 dihapus: banner menimpa CTA hero
+          ("Konsultasi Ustadz") karena z-10-nya di atas */}
+      <div className="max-w-3xl mx-auto px-4 mb-20">
         <DisclaimerBanner />
       </div>
 
