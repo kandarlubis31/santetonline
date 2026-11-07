@@ -8,7 +8,7 @@ Website interaktif bernuansa horor tradisional Jawa dengan estetika digital — 
 
 ## Preview
 
-[SantetOnline Live Demo](https://santeonline.vercel.app)
+[SantetOnline Live Demo](https://santetonline-two.vercel.app)
 
 ## Fitur
 
@@ -48,8 +48,8 @@ Website interaktif bernuansa horor tradisional Jawa dengan estetika digital — 
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-username/santeonline.git
-cd santeonline
+git clone https://github.com/kandarlubis31/santetonline.git
+cd santetonline
 
 # Install dependencies
 pnpm install
