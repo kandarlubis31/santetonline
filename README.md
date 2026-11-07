@@ -154,6 +154,16 @@ Toggle tersedia di navbar (icon Sun/Moon).
 ### Splash Screen
 Animasi cinematic ~4.5 detik: glow orb → skull icon materialize → brand text reveal → tagline. Hanya muncul 1x per sesi.
 
+---
+
+## English
+
+**SantetOnline** is a satirical website that presents "online santet services" as an e-commerce store — packages, dummy QRIS checkout, fictional testimonials — wrapped in traditional Javanese horror aesthetics.
+
+It is a joke project, stated plainly in the README, built as a static site and deployed on Vercel.
+
+---
+
 ## License
 
 [MIT](LICENSE)
